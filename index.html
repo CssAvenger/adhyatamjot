@@ -13,53 +13,62 @@
         integrity="sha512-SvJR34InARUfJb279ipE/gjQqX11MDKaly9MNb0vevuWQJmZ23UH7F/65ScEsvLI+myKGbdfA1En82wVSCHQ8A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
-    <header class="flex ">
+    <div id="landing" class="min-h-screen ">
+        <header class="flex p-3">
+            <img src="img/PLogo.png" alt="logo for bhangra classes, and all" class="w-20">
+        </header>
+        <main class="flex justify-center items-center">
 
-    </header>
-    <main id="landing" class="min-h-screen flex justify-center items-center">
+            <nav class="absolute m-3 top-0 md:top-auto md:bottom-0 right-0">
 
-        <nav class="absolute m-3 top-0 md:top-auto md:bottom-0 right-0">
-            
-            <ul class="shadow-lg bg-transparent border-2 border-white rounded p-2 md:py-4 flex px-4 md:flex-col">
-                <li><a data-tip="About" class=" hover:text-blue-500 transform  group transition" href="#"><span class="material-icons text-white text-3xl group-hover:scale-125 text-white text-3xl hover:scale-125 text-white text-3xl hover:scale-125">phone</span><span class="hidden hover:inline-block">About Me</span></a></li>
-                <li><a data-tip="Services" class=" hover:text-blue-500 transform  group transition" href="#"><span class="material-icons text-white text-3xl group-hover:scale-125 text-white text-3xl hover:scale-125 text-white text-3xl hover:scale-125">phone</span></a></li>
-                <li><a data-tip="Bhangra" class=" hover:text-blue-500 transform  group transition" href="#"><span class="material-icons text-white text-3xl group-hover:scale-125 text-white text-3xl hover:scale-125 text-white text-3xl hover:scale-125">phone</span></a></li>
-            </ul>
-        </nav>
-        <div class="flex-col-reverse main-container relative bg-white w-4/5 h-1/2 md:h-100 w-1/2 md:min-w-2/3 md:w-3/4 rounded shadow flex items-center md:justify-between md:flex-row container-id text-gray-800 mt-28 md:mt-0 bg-opacity-80">
-        <button id="theme-change" class="material-icons absolute m-2 right-0 md:left-0 bottom:0 md:top-0 bg-white text-blue-500 rounded-full text-2xl w-10 h-10 flex justify-center items-center">dark_mode</button>
-        <div class="p-8">
-                <h3
-                    class="text-blue-500 text-2xl flex flex-col md:items-baseline items-center md:text-left text-center md:text-4xl font-medium">
-                    Adhyatamjot Singh
-                    <hr class="text-center mt-2 w-1/3 h-1 rounded bg-blue-500 border-0">
-                </h3>
-                <p class="uppercase my-2 text-center md:text-left"><a href="#" class="link link-hover">Web Developer</a>
-                    | <a href="#" class="link link-hover">Graphic Designer</a> | <a href="#"
-                        class="link link-hover">Bhangra Instructor</a></p>
-                <ul class="my-5">
-                    <li class="group my-2"><a href="#"
-                            class=" group-hover:text-blue-500 transition flex items-center text-lg"><span
-                                class="material-icons mr-1 group-hover:text-blue-500 transition ">phone</span>+91-8376086993</a>
+                <ul class="shadow-lg bg-transparent p-2 md:py-4 flex px-4 md:flex-col">
+                    <li><a data-tip="About" class=" hover:text-blue-500 transform  group transition" href="#"><span
+                                class="material-icons text-white text-3xl group-hover:scale-125 text-white text-3xl hover:scale-125 text-white text-3xl hover:scale-125">phone</span><span
+                                class="hidden hover:inline-block">About Me</span></a></li>
+                    <li><a data-tip="Services" class=" hover:text-blue-500 transform  group transition" href="#"><span
+                                class="material-icons text-white text-3xl group-hover:scale-125 text-white text-3xl hover:scale-125 text-white text-3xl hover:scale-125">phone</span></a>
                     </li>
-                    <li class="group my-2"><a href="#"
-                            class=" group-hover:text-blue-500 transition flex items-center text-lg"><span
-                                class="material-icons mr-1 group-hover:text-blue-500 transition ">mail</span>Adhyatamjot.singh@gmail.com</a>
+                    <li><a data-tip="Bhangra" class=" hover:text-blue-500 transform  group transition" href="#"><span
+                                class="material-icons text-white text-3xl group-hover:scale-125 text-white text-3xl hover:scale-125 text-white text-3xl hover:scale-125">phone</span></a>
                     </li>
-                    <li class="group my-2"><a href="#"
-                            class=" group-hover:text-blue-500 transition flex items-center text-lg"><span
-                                class="material-icons mr-1 group-hover:text-blue-500 transition ">location_on</span>Delhi,
-                            India</a></li>
                 </ul>
-                <p></p>
+            </nav>
+            <div
+                class="flex-col-reverse main-container relative bg-white w-4/5 h-1/2 md:h-100 w-1/2 md:min-w-2/3 md:w-3/4 rounded shadow flex items-center md:justify-between md:flex-row container-id text-gray-800 mt-28 md:mt-0 bg-opacity-80">
+                <button id="theme-change"
+                    class="material-icons absolute m-2 right-0 md:left-0 bottom-0 bg-white text-blue-500 rounded-full text-2xl w-10 h-10 flex justify-center items-center">dark_mode</button>
+                <div class="p-8">
+                    <h3
+                        class="text-blue-500 text-2xl flex flex-col md:items-baseline items-center md:text-left text-center md:text-4xl font-medium">
+                        Adhyatamjot Singh
+                        <hr class="text-center mt-2 w-1/3 h-1 rounded bg-blue-500 border-0">
+                    </h3>
+                    <p class="uppercase my-2 text-center md:text-left"><a href="#" class="link link-hover">Web
+                            Developer</a>
+                        | <a href="#" class="link link-hover">Graphic Designer</a> | <a href="#"
+                            class="link link-hover">Bhangra Instructor</a></p>
+                    <ul class="my-5">
+                        <li class="group my-2"><a href="#"
+                                class=" group-hover:text-blue-500 transition flex items-center text-lg"><span
+                                    class="material-icons mr-1 group-hover:text-blue-500 transition ">phone</span>+91-8376086993</a>
+                        </li>
+                        <li class="group my-2"><a href="#"
+                                class=" group-hover:text-blue-500 transition flex items-center text-lg"><span
+                                    class="material-icons mr-1 group-hover:text-blue-500 transition ">mail</span>Adhyatamjot.singh@gmail.com</a>
+                        </li>
+                        <li class="group my-2"><a href="#"
+                                class=" group-hover:text-blue-500 transition flex items-center text-lg"><span
+                                    class="material-icons mr-1 group-hover:text-blue-500 transition ">location_on</span>Delhi,
+                                India</a></li>
+                    </ul>
+                    <p></p>
+                </div>
+                <img src="https://cssavenger.github.io/adhyatamjot/img/my.jpg" alt="my image"
+                    class="md:w-1/3 w-48 h-48 md:h-full object-cover object-top md:rounded-tr md:rounded-br md:rounded-tl-none md:rounded-bl-none filter grayscale rounded-full text-center border-4 border-base-100 -mt-24 md:mt-0 md:border-none" id="my-img">
+
             </div>
-            <img src="https://cssavenger.github.io/adhyatamjot/img/my.jpg" alt="my image"
-                class="md:w-1/3 w-48 h-48 md:h-full object-cover object-top md:rounded-tr md:rounded-br md:rounded-tl-none md:rounded-bl-none filter grayscale rounded-full text-center border-4 border-base-100 -mt-24 md:mt-0 md:border-none">
-
-        </div>
-
-
-    </main>
+        </main>
+    </div>
     <footer class="flex p-4 text-base-100">
         <h4>Paaji Lancer - The Lancer you need!</h4>
         <span>Photo by <a
@@ -74,7 +83,6 @@
         crossorigin='anonymous'></script>
     <script>
         $('#theme-change').click(function () {
-            console.log($(this).text());
             if ($(this).text() == 'dark_mode') {
                 $('div.container-id').removeClass('text-gray-800');
                 $('div.container-id').removeClass('bg-white');
@@ -91,6 +99,9 @@
 
             }
 
+        });
+        document.getElementById('my-img').addEventListener('contextmenu',function(e){
+            e.preventDefault();
         });
     </script>
 </body>
