@@ -8,51 +8,85 @@
 </head>
 
 <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.9/tailwind.min.css"
         integrity="sha512-SvJR34InARUfJb279ipE/gjQqX11MDKaly9MNb0vevuWQJmZ23UH7F/65ScEsvLI+myKGbdfA1En82wVSCHQ8A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
-    <div id="landing" class="min-h-screen ">
-        <header class="flex p-3">
-            <img src="img/PLogo.png" alt="logo for bhangra classes, and all" class="w-20">
-        </header>
-        <main class="flex justify-center items-center">
+    <header class="flex justify-center w-full m-auto flex text-center">
+        <div class="w-11/12 my-3 rounded-3xl bg-white text-gray-800 fixed bg-opacity-95 z-10">
+            <div class="flex justify-between items-center py-1 md:py-3 px-5">
+                <span><a href="#">
+                        <img src="img/PLogo.png" alt="" class="w-12 md:w-16">
+                    </a>
+                </span>
+                <button id="menu-trigger"><span class="material-icons text-4xl">drag_handle</span></button>
+            </div>
+            <div id="hid-menu" class="hidden h-auto">
+                <div class="flex flex-col md:flex-row md: justify-evenly items-center justify-center">
+                    <a href="#"
+                        class="group text-2xl flex items-center my-2 transform transition hover:scale-110 text-gray-600"><span
+                            class="transform scale-100 group-hover:text-blue-500 mr-1 material-icons">design_services</span>
+                        <span class="group-hover:text-gray-800">Work</span> </a>
+                    <a href="#"
+                        class="group text-lg flex items-center my-2 transform transition hover:scale-110 text-2xl text-gray-600"><span
+                            class="transform scale-100 group-hover:text-blue-500 mr-1 material-icons">face</span>
+                        <span class="group-hover:text-gray-800">About</span> </a>
+                    <a href="#" id="bhangra-menu"
+                        class="group text-lg flex items-center my-2 transform transition hover:scale-110 text-2xl text-gray-600"><span>
+                            <svg id="bhangra" class="w-8 h-8" viewBox="0 0 102 97" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M58.4528 8.091L52.2414 34.9591C52.2414 34.9591 63.8785 39.7923 69.1823 50.4393L97.4441 36.7989C98.1392 19.7202 70.3591 3.88161 58.4528 8.091Z"
+                                    stroke="#4E5563" stroke-width="5" />
+                                <path d="M59.0995 38.4419L63.7141 19.6555" stroke="#4E5563" stroke-width="5"
+                                    stroke-linecap="round" />
+                                <path d="M62.4959 42.3403L74.0841 26.8505" stroke="#4E5563" stroke-width="5"
+                                    stroke-linecap="round" />
+                                <path
+                                    d="M40.5041 57.2691C47.8574 59.5232 58.6534 71.1058 63.0654 89C67.0763 83.278 77.7052 65.1758 68.079 48.9462C65.5722 44.6114 53.2889 31 39 31"
+                                    stroke="#4E5563" stroke-width="5" />
+                                <path
+                                    d="M37.2694 57.377C20.8807 61.0525 15.2084 81.4732 13.5969 88C-10.7127 49.7277 22.2903 26.8296 41.5238 31.6329C55.1852 35.0447 51.292 54.2323 37.2694 57.377Z"
+                                    stroke="#4E5563" stroke-width="5" />
+                                <path d="M66.1467 45.7117L83.6506 37.4753" stroke="#4E5563" stroke-width="5"
+                                    stroke-linecap="round" />
+                            </svg>
 
-            <nav class="absolute m-3 top-0 md:top-auto md:bottom-0 right-0">
+                        </span>
+                        <span class="group-hover:text-gray-800">Bhangra</span> </a>
+                    <a href="#"
+                        class="group text-lg flex items-center my-2 transform transition hover:scale-110 text-2xl text-gray-600"><span
+                            class="transform scale-100 group-hover:text-blue-500 mr-1 material-icons">perm_phone_msg</span>
+                        <span class="group-hover:text-gray-800">Contact</span> </a>
 
-                <ul class="shadow-lg bg-transparent p-2 md:py-4 flex px-4 md:flex-col">
-                    <li><a data-tip="About" class=" hover:text-blue-500 transform  group transition" href="#"><span
-                                class="material-icons text-white text-3xl group-hover:scale-125 text-white text-3xl hover:scale-125 text-white text-3xl hover:scale-125">phone</span><span
-                                class="hidden hover:inline-block">About Me</span></a></li>
-                    <li><a data-tip="Services" class=" hover:text-blue-500 transform  group transition" href="#"><span
-                                class="material-icons text-white text-3xl group-hover:scale-125 text-white text-3xl hover:scale-125 text-white text-3xl hover:scale-125">phone</span></a>
-                    </li>
-                    <li><a data-tip="Bhangra" class=" hover:text-blue-500 transform  group transition" href="#"><span
-                                class="material-icons text-white text-3xl group-hover:scale-125 text-white text-3xl hover:scale-125 text-white text-3xl hover:scale-125">phone</span></a>
-                    </li>
-                </ul>
-            </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="landing" class="min-h-screen flex items-center justify-center relative">
+        <main class="w-full flex justify-center items-center">
             <div
-                class="flex-col-reverse main-container relative bg-white w-4/5 h-1/2 md:h-100 w-1/2 md:min-w-2/3 md:w-3/4 rounded shadow flex items-center md:justify-between md:flex-row container-id text-gray-800 mt-28 md:mt-0 bg-opacity-80">
+                class="flex-col-reverse main-container relative bg-white w-11/12 h-1/2 md:h-100 md:min-w-2/3 md:w-5/6 rounded shadow flex items-center md:justify-between md:flex-row container-id text-gray-800 mt-28 md:mt-0 bg-opacity-80">
                 <button id="theme-change"
                     class="material-icons absolute m-2 right-0 md:left-0 bottom-0 bg-white text-blue-500 rounded-full text-2xl w-10 h-10 flex justify-center items-center">dark_mode</button>
-                <div class="p-8">
+                <div class="px-8 py-2">
                     <h3
-                        class="text-blue-500 text-2xl flex flex-col md:items-baseline items-center md:text-left text-center md:text-4xl font-medium">
+                        class="text-blue-500 text-3xl flex flex-col md:items-baseline items-center md:text-left text-center md:text-4xl font-medium">
                         Adhyatamjot Singh
-                        <hr class="text-center mt-2 w-1/3 h-1 rounded bg-blue-500 border-0">
+                        <hr class="text-center mt-1 md:mt-2 w-1/3 h-1 rounded bg-blue-500 border-0">
                     </h3>
-                    <p class="uppercase my-2 text-center md:text-left"><a href="#" class="link link-hover">Web
-                            Developer</a>
-                        | <a href="#" class="link link-hover">Graphic Designer</a> | <a href="#"
-                            class="link link-hover">Bhangra Instructor</a></p>
+                    <p class=" uppercase text-lg flex flex-col md:flex-row my-2 text-center md:text-left"><a
+                            href="#">Web
+                            Developer |&nbsp; </a>
+                        <a href="#"> Graphic Designer |&nbsp; </a><a href="#"> Bhangra Instructor</a></p>
                     <ul class="my-5">
-                        <li class="group my-2"><a href="#"
+                        <li class="group my-2"><a href="tel:08376086993"
                                 class=" group-hover:text-blue-500 transition flex items-center text-lg"><span
                                     class="material-icons mr-1 group-hover:text-blue-500 transition ">phone</span>+91-8376086993</a>
                         </li>
-                        <li class="group my-2"><a href="#"
+                        <li class="group my-2"><a href="mailto:Adhyatamjot.singh@gmail.com"
                                 class=" group-hover:text-blue-500 transition flex items-center text-lg"><span
                                     class="material-icons mr-1 group-hover:text-blue-500 transition ">mail</span>Adhyatamjot.singh@gmail.com</a>
                         </li>
@@ -63,14 +97,21 @@
                     </ul>
                     <p></p>
                 </div>
-                <img src="https://cssavenger.github.io/adhyatamjot/img/my.jpg" alt="my image"
-                    class="md:w-1/3 w-48 h-48 md:h-full object-cover object-top md:rounded-tr md:rounded-br md:rounded-tl-none md:rounded-bl-none filter grayscale rounded-full text-center border-4 border-base-100 -mt-24 md:mt-0 md:border-none" id="my-img">
+                <img src="img/my.jpg" alt="my image"
+                    class="md:w-1/3 w-48 h-48 md:h-full object-cover object-top md:rounded-tr md:rounded-br md:rounded-tl-none md:rounded-bl-none filter grayscale rounded-full text-center border-4 border-base-100 -mt-24 md:mt-0 md:border-none"
+                    id="my-img">
 
             </div>
         </main>
+        <div class="w-2/3 md:w-auto absolute flex justify-evenly md:justify-baseline md:flex-col bottom-0 md:right-0 md:mx-5 mb-3 text-white">
+            <a href="https://www.facebook.com/people/Adhyatamjot-Singh/100005100975607" class="fa fa-facebook my-2 text-3xl transform transition hover:rotate-12"></a>
+            <a href="https://wa.me/918376086993" class="fa fa-whatsapp my-2 text-3xl transform transition hover:rotate-12"></a>
+            <a href="https://www.linkedin.com/in/adhyatamjot-singh" class="fa fa-linkedin my-2 text-3xl transform transition hover:rotate-12"></a>
+            <a href="https://www.instagram.com/addy_khatri01" class="fa fa-instagram my-2 text-3xl transform transition hover:rotate-12"></a>
+        </div>
     </div>
     <footer class="flex p-4 text-base-100">
-        <h4>Paaji Lancer - The Lancer you need!</h4>
+        <h4>Copyright @ Adhyatamjot Singh</h4>
         <span>Photo by <a
                 href="https://unsplash.com/@ryland_dean?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Ryland
                 Dean</a> on <a
@@ -81,29 +122,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'
         integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=='
         crossorigin='anonymous'></script>
-    <script>
-        $('#theme-change').click(function () {
-            if ($(this).text() == 'dark_mode') {
-                $('div.container-id').removeClass('text-gray-800');
-                $('div.container-id').removeClass('bg-white');
-                $('div.container-id').addClass('text-white');
-                $('div.container-id').addClass('bg-gray-900');
-                $(this).text('light_mode');
-            }
-            else {
-                $('div.container-id').addClass('bg-white');
-                $('div.container-id').addClass('text-gray-800');
-                $('div.container-id').removeClass('bg-gray-900');
-                $('div.container-id').removeClass('text-white');
-                $(this).text('dark_mode');
-
-            }
-
-        });
-        document.getElementById('my-img').addEventListener('contextmenu',function(e){
-            e.preventDefault();
-        });
-    </script>
+    <script src="js/index.js" defer></script>
 </body>
 
 </html>
