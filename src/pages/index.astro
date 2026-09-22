@@ -1,0 +1,312 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Ticker from "../components/Ticker.astro";
+
+const tickerItems = [
+  "MICROSERVICES", "TECHNICAL LEADERSHIP", "ANGULAR 16+", "REACT",
+  "TYPESCRIPT", "PYTHON", "FASTAPI", "FLASK", "BHANGRA CHOREOGRAPHY", "STAGE COMMAND",
+];
+
+const techStacks = [
+  {
+    n: "01", title: "Frontend Engineering",
+    blurb: "Reactive, lazy-loaded, OnPush-tuned interfaces.",
+    tags: ["Angular 16+", "React", "Svelte", "TypeScript", "JavaScript ES2022+", "RxJS", "HTML5 / CSS3", "jQuery"],
+  },
+  {
+    n: "02", title: "Backend & APIs",
+    blurb: "Python services built for throughput and clarity.",
+    tags: ["Python 3", "FastAPI", "Flask", "PHP 8", "CodeIgniter", "Core Java", "REST API Design"],
+  },
+  {
+    n: "03", title: "Data, Security & DevOps",
+    blurb: "Hardened data layers and zero-trust boundaries.",
+    tags: ["MySQL", "MariaDB", "Azure SQL", "Supabase (PostgreSQL)", "JWT", "OWASP Top 10", "Rate Limiting", "RBAC", "Docker", "Git"],
+  },
+  {
+    n: "04", title: "Leadership & Craft",
+    blurb: "Teams mentored, standards set, sprints shipped.",
+    tags: ["Technical Leadership", "Agile Delivery", "Code Review Culture", "Cross-Team Mentorship", "Stakeholder Communication"],
+  },
+];
+
+const experience = [
+  {
+    date: "2022 — Present", role: "Senior Web Developer · Assistant Manager", org: "Prudent Insurance Brokers",
+    points: [
+      "Architected Angular frontend modules for a Retail Insurance Issuance Portal serving thousands of daily policy transactions, cutting load times with lazy loading and OnPush change detection.",
+      "Designed and maintained Python (Flask/SQL) backend APIs, collaborating with QA and product in daily standups for on-time sprint delivery.",
+      "Mentored junior developers through code reviews and architectural discussions, establishing team-wide OWASP-aligned coding standards.",
+      "Drove JWT authentication and role-based access control across microservice boundaries — zero unauthorized-access incidents since.",
+    ],
+  },
+  {
+    date: "2020 — 2022", role: "Junior PHP Web Developer", org: "Sharp Vision Consultants",
+    points: [
+      "Developed PHP/MySQL modules for client-facing applications, contributing to a 30% reduction in reported UI bugs through systematic QA collaboration.",
+      "Built responsive components with HTML5, CSS3, JavaScript and jQuery, improving cross-browser compatibility for enterprise clients.",
+      "Supported senior developers with feature delivery and hotfix deployments inside agile sprint cycles.",
+    ],
+  },
+  {
+    date: "2019 — 2020", role: "Technical Trainer", org: "Livewire India",
+    points: [
+      "Delivered hands-on coding instruction in JavaScript, PHP and Java to undergraduate students with top session satisfaction scores.",
+      "Mentored students 1-on-1 from concept to deployment across 10+ college-level web projects.",
+    ],
+  },
+  {
+    date: "2019 — 2021", role: "Event Manager (Part-Time)", org: "Shining Leaf Events",
+    points: [
+      "Planned and executed online events end-to-end — budgets, vendor contracts, email campaigns and social outreach.",
+    ],
+  },
+];
+
+const projects = [
+  {
+    n: "01", tag: "Insurance · Full Stack", title: "Retail Policy Issuance Portal",
+    blurb: "A full-featured online insurance marketplace — motor vehicle search, multi-gateway payments, and an admin analytics backend tracking issued policies and revenue in real time.",
+    tags: ["PHP", "MySQL", "JavaScript", "jQuery", "HTML/CSS"], note: "Thousands of daily policy transactions",
+  },
+  {
+    n: "02", tag: "Fintech · Platform Engineering", title: "Taabir — Crowdfunding Platform",
+    blurb: "A GoFundMe-style platform for campaign creation, global donations and story sharing, backed by a robust REST layer in Java Servlets handling concurrent sessions and secure financial flows.",
+    tags: ["Angular", "Java Servlets", "MariaDB", "REST APIs"], note: "Concurrent sessions, secure money movement",
+  },
+  {
+    n: "03", tag: "Security · Developer Tooling", title: "AuthWrap — JWT Auth Middleware",
+    blurb: "A reusable authentication wrapper for third-party API security with code-level rate limiting — plug-and-play architecture that secures new endpoints with near-zero configuration.",
+    tags: ["Python", "FastAPI", "Angular", "JWT"], note: "Abuse-proof endpoints out of the box",
+  },
+  {
+    n: "04", tag: "EdTech · Enterprise LMS", title: "Employee Training Management System",
+    blurb: "A Zoho Learn-style LMS with employee, department and training modules, task tracking and calendar integration — role-based views for HR admins, managers and learners.",
+    tags: ["Angular", "Flask", "MySQL", "RBAC"], note: "Adopted across departments, three role views",
+  },
+];
+---
+
+<Layout
+  title="Adhyatamjot Singh — Full Stack Developer, Bhangra Instructor & Emcee"
+  description="Portfolio of Adhyatamjot Singh — a Full Stack Web Developer and Technical Lead in New Delhi with 6+ years shipping enterprise products, who also teaches Bhangra and commands stages as an emcee."
+  path="/"
+>
+  <section class="hero">
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="hero-snippets" aria-hidden="true">
+      <span style="top:8%; left:6%;">&lt;motion.div /&gt;</span>
+      <span style="top:14%; right:8%;">await api.get()</span>
+      <span style="top:42%; right:10%;">@OnPush</span>
+      <span style="top:48%; left:9%;">{"{ jwt.verify }"}</span>
+    </div>
+    <div class="container hero-inner reveal">
+      <p class="hero-kicker">Full Stack Developer · Bhangra Instructor · Emcee</p>
+      <h1>Code by day, rhythm by night — engineered either way.</h1>
+      <p class="hero-sub">Scroll down for the manifesto, the tech arsenal, and six years of shipped work.</p>
+    </div>
+    <div class="info-box">
+      <div>
+        <p class="info-box-data">1+</p>
+        <small class="info-box-desc">Years of Experience</small>
+      </div>
+      <div>
+        <p class="info-box-data">1+</p>
+        <small class="info-box-desc">Years of Experience</small>
+      </div>
+      <div>
+        <p class="info-box-data">1+</p>
+        <small class="info-box-desc">Years of Experience</small>
+      </div>
+      <div>
+        <p class="info-box-data">1+</p>
+        <p class="info-box-desc">Years of Experience</p>
+      </div>
+    </div>
+    <Ticker items={tickerItems} />
+  </section>
+
+  <section class="section-pad" id="manifesto">
+    <div class="container">
+      <p class="eyebrow reveal">01 // The Manifesto</p>
+      <h2 class="section-title reveal">The intersection of algorithmic precision &amp; raw human rhythm.</h2>
+
+      <div class="two-col">
+        <div class="manifesto-body reveal">
+          <p>I'm a Full Stack Web Developer and Technical Lead who has spent 6+ years shipping enterprise-grade products — from insurance issuance portals processing thousands of daily policies, to crowdfunding platforms moving real money across borders.</p>
+          <p>My toolbox runs deep: Angular with RxJS and modular architecture on the front, Python with FastAPI and Flask on the back, hardened with JWT, OWASP discipline and role-based access control. I lead teams the same way I write code — clear standards, honest reviews, no shortcuts.</p>
+          <p>And when the laptop closes, the dhol starts. I teach Bhangra, command stages as an emcee, and bring that same electric energy to everything I ship.</p>
+          <div class="tag-row" style="margin-top:24px;">
+            <span class="tag">Full Stack Architecture</span>
+            <span class="tag">High-Concurrency APIs</span>
+            <span class="tag">OWASP-Secured Systems</span>
+            <span class="tag">Tech Leadership</span>
+            <span class="tag">Bhangra Choreography</span>
+            <span class="tag">Stage Command</span>
+          </div>
+        </div>
+
+        <aside class="reveal">
+          <div class="side-panel">
+            <h4>Education</h4>
+            <div class="side-entry">
+              <div class="title">Master of Computer Applications (MCA)</div>
+              <div class="meta">IGNOU · 2023 — 2027 · In Progress</div>
+            </div>
+            <div class="side-entry">
+              <div class="title">Bachelor of Computer Applications (BCA)</div>
+              <div class="meta">IGNOU · First Division</div>
+            </div>
+            <div class="side-entry">
+              <div class="title">Diploma, Computer Science Engineering</div>
+              <div class="meta">G.N.D.I.T Rohini (BTE) · Founded Cultural &amp; Technical Clubs</div>
+            </div>
+          </div>
+          <div class="side-panel">
+            <h4>Certifications</h4>
+            <ul class="cert-list">
+              <li>Cisco Python Essentials</li>
+              <li>Angular Fundamentals — Sololearn</li>
+              <li>Full Stack Web Development — UpGrad</li>
+              <li>Core Java — WebTek Labs</li>
+              <li>Java Fundamentals — LinkedIn Learning</li>
+              <li>ChatGPT for Beginners — Great Learning</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:var(--bg-soft); border-block:1px solid var(--panel-border);" id="stack">
+    <div class="container">
+      <p class="eyebrow reveal">02 // Tech Arsenal</p>
+      <h2 class="section-title reveal">Engineered for speed, resilience, and sensory delight.</h2>
+
+      <div class="card-grid">
+        {techStacks.map((s) => (
+          <div class="card reveal">
+            <div class="card-head">
+              <h3>{s.title}</h3>
+              <span class="card-index">{s.n}</span>
+            </div>
+            <p>{s.blurb}</p>
+            <div class="tag-row">
+              {s.tags.map((t) => <span class="tag">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" id="trajectory">
+    <div class="container">
+      <p class="eyebrow reveal">03 // Trajectory</p>
+      <h2 class="section-title reveal">Six years of engineered impact, team by team.</h2>
+
+      <div class="timeline">
+        {experience.map((e) => (
+          <div class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <div class="timeline-date">{e.date}</div>
+            <h3>{e.role}</h3>
+            <div class="timeline-org">{e.org}</div>
+            <ul>
+              {e.points.map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:var(--bg-soft); border-block:1px solid var(--panel-border);" id="artifacts">
+    <div class="container">
+      <p class="eyebrow reveal">04 // Artifacts</p>
+      <h2 class="section-title reveal">Selected engineering works, built to hold production weight.</h2>
+      <p class="section-intro reveal">Four systems from the trenches — insurance, fintech, security tooling and EdTech.</p>
+
+      <div class="card-grid">
+        {projects.map((p) => (
+          <div class="card reveal">
+            <div class="card-head">
+              <div>
+                <p class="eyebrow" style="margin-bottom:10px;">{p.tag}</p>
+                <h3>{p.title}</h3>
+              </div>
+              <span class="card-index" style="font-size:26px;">{p.n}</span>
+            </div>
+            <p>{p.blurb}</p>
+            <div class="tag-row" style="margin-bottom:18px;">
+              {p.tags.map((t) => <span class="tag">{t}</span>)}
+            </div>
+            <div style="display:flex; align-items:center; justify-content:space-between; padding-top:16px; border-top:1px solid var(--panel-border);">
+              <span style="color:var(--accent); font-size:13.5px;">{p.note}</span>
+              <span style="font-family:var(--font-mono); font-size:12.5px; color:var(--text-muted); display:flex; align-items:center; gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.96.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.05.78 2.12v3.14c0 .3.21.66.79.55A11.52 11.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5Z"/></svg>
+                GitHub
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container reveal">
+      <p class="eyebrow" style="justify-content:center;">05 // Reach Out</p>
+      <h2>Let's engineer something legendary.</h2>
+      <p>No forms, no friction. One click and your mail client opens — or copy the address and say hello your way.</p>
+
+      <div class="contact-grid" style="max-width:720px; margin-inline:auto; text-align:left;">
+        <a class="contact-card" href="https://github.com/CssAvenger" target="_blank" rel="noopener noreferrer">
+          <span class="contact-left">
+            <span class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.96.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.05.78 2.12v3.14c0 .3.21.66.79.55A11.52 11.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5Z"/></svg>
+            </span>
+            <span>
+              <div class="title">GitHub</div>
+              <div class="value">@CssAvenger</div>
+            </span>
+          </span>
+        </a>
+        <a class="contact-card" href="https://adhyatamjot-singh.eu.org" target="_blank" rel="noopener noreferrer">
+          <span class="contact-left">
+            <span class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20Z"/></svg>
+            </span>
+            <span>
+              <div class="title">Live Site</div>
+              <div class="value">adhyatamjot-singh.eu.org</div>
+            </span>
+          </span>
+        </a>
+        <a class="contact-card" href="mailto:adhyatamjot.singh@gmail.com">
+          <span class="contact-left">
+            <span class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+            </span>
+            <span>
+              <div class="title">Email</div>
+              <div class="value">adhyatamjot.singh@gmail.com</div>
+            </span>
+          </span>
+        </a>
+        <div class="contact-card" style="cursor:default;">
+          <span class="contact-left">
+            <span class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span>
+              <div class="title">Base</div>
+              <div class="value">New Delhi, India</div>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

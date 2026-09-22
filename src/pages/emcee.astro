@@ -1,0 +1,144 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Ticker from "../components/Ticker.astro";
+import { Image } from "astro:assets";
+import keynoteHost from "../assets/images/emcee-keynote-host.jpg";
+import weddingGala from "../assets/images/emcee-wedding-gala.jpg";
+import auditorium from "../assets/images/emcee-auditorium.jpg";
+import liveArena from "../assets/images/emcee-live-arena.jpg";
+
+const tickerItems = [
+  "COLLEGE FESTS", "AWARD NIGHTS", "PRODUCT LAUNCHES", "CROWD CONTROL",
+  "BILINGUAL HOSTING", "STAGE CRAFT",
+];
+
+const roster = [
+  {
+    n: "01", title: "Corporate Summits & Town Halls",
+    blurb: "Keynote intros, panel moderation, award handovers — timed to the second.",
+  },
+  {
+    n: "02", title: "Cultural Festivals & College Fests",
+    blurb: "High-decibel crowd work, artist introductions, seamless schedule recovery.",
+  },
+  {
+    n: "03", title: "Weddings & Family Galas",
+    blurb: "Warm, bilingual hosting in English, Hindi and Punjabi — every generation engaged.",
+  },
+  {
+    n: "04", title: "Product Launches & Brand Nights",
+    blurb: "Scripted precision with room for the unscripted moment that makes the night.",
+  },
+];
+---
+
+<Layout
+  title="Event Emcee & Host — Corporate, Weddings & Festivals | Adhyatamjot Singh"
+  description="Book Adhyatamjot Singh as your event emcee — bilingual hosting for corporate summits, college fests, weddings and product launches, with crowd control and stage craft honed over years on the mic."
+  path="/emcee"
+>
+  <section class="hero" style="padding-bottom:0;">
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <Ticker items={tickerItems} />
+  </section>
+
+  <section class="section-pad" id="roster">
+    <div class="container">
+      <p class="eyebrow reveal">M.01 // Event Roster</p>
+      <h2 class="section-title reveal">Rooms I've held, formats I own.</h2>
+
+      <div style="display:flex; flex-direction:column; gap:14px; margin-top:44px;">
+        {roster.map((r) => (
+          <div class="card reveal" style="display:flex; align-items:center; justify-content:space-between; gap:20px;">
+            <div style="display:flex; align-items:center; gap:22px;">
+              <span class="card-index" style="font-size:26px;">{r.n}</span>
+              <div>
+                <h3 style="margin-bottom:4px;">{r.title}</h3>
+                <p style="margin:0;">{r.blurb}</p>
+              </div>
+            </div>
+            <span class="icon-badge" style="margin:0; flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4"/></svg>
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:var(--bg-soft); border-block:1px solid var(--panel-border);" id="on-stage">
+    <div class="container">
+      <p class="eyebrow reveal">M.02 // On Stage</p>
+      <h2 class="section-title reveal">Spotlights, punchlines and full houses.</h2>
+      <p class="section-intro reveal">Dashed frames and showreel slots are reserved placeholders — drop in your stage photos and hosting videos anytime.</p>
+
+      <div class="gallery">
+        <div class="gallery-item tall reveal">
+          <Image src={keynoteHost} alt="Keynote host silhouetted on stage at a tech summit" width={480} height={620} />
+          <div class="gallery-caption">
+            <span class="label">Keynote Host &amp; Tech Summit Anchor</span>
+            <span class="pill-tag">Corporate</span>
+          </div>
+        </div>
+
+        <div class="gallery-item mid placeholder reveal">
+          <div class="gallery-video">
+            <span class="pill-tag" style="align-self:flex-start;">Video Slot</span>
+            <span class="filename">SHOWREEL_01.MP4</span>
+            <span class="play">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <small style="text-align:center;">Your hosting showreel — embed the crowd-moment video</small>
+          </div>
+        </div>
+
+        <div class="gallery-item mid reveal">
+          <Image src={weddingGala} alt="Microphone close-up at a wedding gala and award ceremony" width={480} height={280} />
+          <div class="gallery-caption">
+            <span class="label">Wedding Galas &amp; Prestige Award Ceremonies</span>
+            <span class="pill-tag">Gala</span>
+          </div>
+        </div>
+
+        <div class="gallery-item placeholder reveal">
+          <div class="gallery-video">
+            <span class="pill-tag" style="align-self:flex-start;">Video Slot</span>
+            <span class="filename">SHOWREEL_02.MP4</span>
+            <span class="play">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <small style="text-align:center;">Stage introduction clip — drop your best opener</small>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal">
+          <Image src={auditorium} alt="Microphone stand lit red at an auditorium product launch" width={480} height={280} />
+          <div class="gallery-caption">
+            <span class="label">Auditorium Convocations &amp; Product Launches</span>
+            <span class="pill-tag">Auditorium</span>
+          </div>
+        </div>
+
+        <div class="gallery-item mid reveal">
+          <Image src={liveArena} alt="Stage microphone lit dramatically under blue and amber lights" width={480} height={480} />
+          <div class="gallery-caption">
+            <span class="label">Live Arena Acoustics &amp; Audience Control</span>
+            <span class="pill-tag">Live Arena</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container reveal">
+      <h2>Your event deserves a voice, not a script.</h2>
+      <p>Tell me the date, the city and the crowd — I'll handle the rest of the room.</p>
+      <a class="btn btn-primary" href="mailto:adhyatamjot.singh@gmail.com?subject=Emcee%20booking%20inquiry">
+        Book the Mic
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>

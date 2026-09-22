@@ -1,0 +1,33 @@
+---
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/" ? path === "/" : path.startsWith(href);
+
+const links = [
+  { href: "/", label: "Portfolio" },
+  { href: "/dance", label: "Dance" },
+  { href: "/emcee", label: "Emcee" },
+];
+---
+
+<header class="site-nav" transition:persist>
+  <a href="/" class="nav-brand" aria-label="Adhyatamjot Singh — home">
+    <span class="nav-mark">AS</span>
+    <span>ADHYATAMJOT</span>
+  </a>
+
+  <nav class="nav-links" aria-label="Primary">
+    {links.map((l) => (
+      <a href={l.href} aria-current={isActive(l.href) ? "page" : undefined}>
+        {l.label}
+      </a>
+    ))}
+  </nav>
+
+  <a class="nav-cta" href="/resume.pdf" download>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <path d="M12 3v13m0 0-4-4m4 4 4-4M5 21h14" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="cta-label">Resume</span>
+  </a>
+</header>

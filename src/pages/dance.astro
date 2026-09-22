@@ -1,0 +1,119 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Ticker from "../components/Ticker.astro";
+import bhangraParade from "../assets/images/dance-bhangra-parade.jpg";
+import festivalHeaddress from "../assets/images/dance-festival-headdress.jpg";
+import { Image } from "astro:assets";
+
+const tickerItems = [
+  "CHOREOGRAPHY", "WORKSHOPS", "FOLK BEATS", "CROWD ENERGY",
+  "DHOL SYNC", "FESTIVALS", "BHANGRA", "LIVE STAGE",
+];
+
+const offerings = [
+  {
+    n: "01", title: "Live Stage Performances",
+    blurb: "High-energy Bhangra sets for festivals, weddings and corporate nights.",
+  },
+  {
+    n: "02", title: "Workshops & Training",
+    blurb: "Group classes and 1-on-1 coaching — footwork, stamina, stage presence.",
+  },
+  {
+    n: "03", title: "Choreography for Teams",
+    blurb: "Full routine design for college crews and event troupes, concept to curtain.",
+  },
+];
+---
+
+<Layout
+  title="Bhangra Performances, Workshops & Choreography — Adhyatamjot Singh"
+  description="Book high-energy Bhangra stage performances, group workshops, and full team choreography with Adhyatamjot Singh — for festivals, weddings and corporate events in New Delhi and beyond."
+  path="/dance"
+>
+  <section class="hero" style="padding-bottom:0;">
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <Ticker items={tickerItems} />
+  </section>
+
+  <section class="section-pad" id="offerings">
+    <div class="container">
+      <p class="eyebrow reveal">D.01 // Offerings</p>
+      <h2 class="section-title reveal">Three ways the beat finds you.</h2>
+
+      <div class="card-grid" style="grid-template-columns:repeat(3,1fr);">
+        {offerings.map((o) => (
+          <div class="card reveal">
+            <div class="card-head">
+              <div class="icon-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+              </div>
+              <span class="card-index">{o.n}</span>
+            </div>
+            <h3>{o.title}</h3>
+            <p>{o.blurb}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="background:var(--bg-soft); border-block:1px solid var(--panel-border);" id="gallery">
+    <div class="container">
+      <p class="eyebrow reveal">D.02 // The Gallery</p>
+      <h2 class="section-title reveal">Sweat, swagger and stage light.</h2>
+      <p class="section-intro reveal">Dashed frames and reel slots are reserved placeholders — swap in your own photos and video embeds whenever you're ready.</p>
+
+      <div class="gallery">
+        <div class="gallery-item tall reveal">
+          <Image src={bhangraParade} alt="Sufi and folk Bhangra showcase at a main arena performance" width={480} height={620} />
+          <div class="gallery-caption">
+            <span class="label">Sufi &amp; Folk Bhangra Showcase — Main Arena</span>
+            <span class="pill-tag">Live Performance</span>
+          </div>
+        </div>
+
+        <div class="gallery-item mid placeholder reveal">
+          <div class="gallery-video">
+            <span class="pill-tag" style="align-self:flex-start;">Video Slot</span>
+            <span class="filename">REEL_01.MP4</span>
+            <span class="play">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+            <small style="text-align:center;">Your performance reel — drop a YouTube/Vimeo embed here</small>
+          </div>
+        </div>
+
+        <div class="gallery-item mid reveal">
+          <Image src={festivalHeaddress} alt="High-tempo live enactment and solo choreography at a street festival" width={480} height={340} />
+          <div class="gallery-caption">
+            <span class="label">High-Tempo Live Enactment &amp; Solo Choreo</span>
+            <span class="pill-tag">Stage Show</span>
+          </div>
+        </div>
+
+        <div class="gallery-item placeholder reveal" style="grid-column: 1;">
+          <div class="gallery-video">
+            <span class="icon-badge" style="margin:auto;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            </span>
+            <small style="text-align:center;">Reserved slot — crowd-energy shot goes here</small>
+            <span class="pill-tag" style="align-self:center;">Photo Slot</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container reveal">
+      <h2>Want the floor shaking at your event?</h2>
+      <p>Weddings, festivals, corporate nights — drop a line and let's choreograph the chaos.</p>
+      <a class="btn btn-primary" href="mailto:adhyatamjot.singh@gmail.com?subject=Bhangra%20booking%20inquiry">
+        Book the Beat
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+</Layout>
