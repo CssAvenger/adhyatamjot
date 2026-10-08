@@ -1,8 +1,18 @@
 ---
+import {CONTACT, waLink} from "../data/contact"
+
+interface Props {
+  accent?: string;
+  accentGlow?: string;
+  isPortfolio?: boolean;
+}
+
+const { accent = "#2fe6c9", accentGlow = "rgba(47, 230, 201, 0.38)", isPortfolio = false } = Astro.props;
 const year = new Date().getFullYear();
+const footerStyle = `--accent:${accent}; --panel-border-hover:${accentGlow};`;
 ---
 
-<footer class="site-footer">
+<footer class="site-footer" style={footerStyle} transition:name="site-footer" transition:animate="fade">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
@@ -13,7 +23,13 @@ const year = new Date().getFullYear();
         <li><a href="/">Portfolio</a></li>
         <li><a href="/dance">Dance</a></li>
         <li><a href="/emcee">Emcee</a></li>
-        <li><a href="https://github.com/CssAvenger" target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+        {
+          isPortfolio && 
+          <li><a href={CONTACT.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a></li>
+          <li><a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+        }
+        <li><a href={waLink("Hello, I'm interested in learning more about your services.")} target="_blank" rel="noopener noreferrer">WhatsApp ↗</a></li>
+        <li><a href={CONTACT.instagram} target="_blank" rel="noopener noreferrer">Instagram ↗</a></li>  
       </ul>
     </div>
     <div class="footer-bottom">

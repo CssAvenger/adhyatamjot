@@ -1,8 +1,9 @@
 ---
 interface Props {
   items: string[];
+  separator?: string;
 }
-const { items } = Astro.props;
+const { items, separator = "⚡" } = Astro.props;
 const doubled = [...items, ...items];
 ---
 
@@ -12,7 +13,7 @@ const doubled = [...items, ...items];
       {doubled.map((item, i) => (
         <>
           <span>{item}</span>
-          {i < doubled.length - 1 && <span class="dot">⚡</span>}
+          {i < doubled.length - 1 && <span class="dot">{separator}</span>}
         </>
       ))}
     </div>

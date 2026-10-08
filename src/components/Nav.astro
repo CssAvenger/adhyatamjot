@@ -1,4 +1,22 @@
 ---
+import { waLink } from '../data/contact';
+
+interface Props {
+  accent?: string;
+  accentSoft?: string;
+  accentGlow?: string;
+  onAccent?: string;
+  hideResume?: boolean;
+}
+
+const {
+  accent = "#2fe6c9",
+  accentSoft = "rgba(47, 230, 201, 0.14)",
+  accentGlow = "rgba(47, 230, 201, 0.38)",
+  onAccent = "#04211d",
+  hideResume = true,
+} = Astro.props;
+
 const path = Astro.url.pathname;
 const isActive = (href: string) =>
   href === "/" ? path === "/" : path.startsWith(href);
@@ -8,11 +26,13 @@ const links = [
   { href: "/dance", label: "Dance" },
   { href: "/emcee", label: "Emcee" },
 ];
+
+const navStyle = `--accent:${accent}; --accent-soft:${accentSoft}; --accent-glow:${accentGlow};`;
 ---
 
-<header class="site-nav" transition:persist>
+<header class="site-nav" style={navStyle} transition:name="site-nav" transition:animate="fade">
   <a href="/" class="nav-brand" aria-label="Adhyatamjot Singh — home">
-    <span class="nav-mark">AS</span>
+    <span class="nav-mark" style={`color:${onAccent};`}>AS</span>
     <span>ADHYATAMJOT</span>
   </a>
 
@@ -24,10 +44,20 @@ const links = [
     ))}
   </nav>
 
-  <a class="nav-cta" href="/resume.pdf" download>
+  {
+    !hideResume && 
+    <a class="nav-cta" style={`color:${onAccent};`} href="/resume.pdf" download>
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
       <path d="M12 3v13m0 0-4-4m4 4 4-4M5 21h14" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <span class="cta-label">Resume</span>
   </a>
+  }
+  {
+    hideResume && 
+    <a class="nav-cta" style={`color:${onAccent};`} href={waLink("Hello, I'm interested in learning more about your services.")} target="_blank" rel="noopener noreferrer">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+<path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />    </svg>
+    <span class="cta-label">Contact</span>
+  </a>}
 </header>

@@ -1,64 +1,69 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Ticker from "../components/Ticker.astro";
+import { CONTACT, waLink, mailLink } from "../data/contact";
 
 const tickerItems = [
-  "MICROSERVICES", "TECHNICAL LEADERSHIP", "ANGULAR 16+", "REACT",
-  "TYPESCRIPT", "PYTHON", "FASTAPI", "FLASK", "BHANGRA CHOREOGRAPHY", "STAGE COMMAND",
+  "FULL STACK DEVELOPMENT", "ANGULAR", "REACT", "TYPESCRIPT", "PYTHON",
+  "FASTAPI", "FLASK", "MICROSERVICES", "JWT & RBAC", "TECHNICAL LEADERSHIP",
+];
+
+const stats = [
+  { value: "6+", label: "Years building production software" },
+  { value: "4", label: "Industries: insurance, fintech, security tooling, EdTech" },
+  { value: "5+", label: "Web Technologies worked with so far" },
+  { value: "10+", label: "College web projects mentored from idea to launch" },
 ];
 
 const techStacks = [
   {
-    n: "01", title: "Frontend Engineering",
-    blurb: "Reactive, lazy-loaded, OnPush-tuned interfaces.",
+    n: "01", title: "Front-End Engineering",
+    blurb: "Fast, reactive interfaces with predictable state and lean change detection.",
     tags: ["Angular 16+", "React", "Svelte", "TypeScript", "JavaScript ES2022+", "RxJS", "HTML5 / CSS3", "jQuery"],
   },
   {
-    n: "02", title: "Backend & APIs",
-    blurb: "Python services built for throughput and clarity.",
+    n: "02", title: "Back-End & API Development",
+    blurb: "Python-first services designed for throughput, clarity and clean REST contracts.",
     tags: ["Python 3", "FastAPI", "Flask", "PHP 8", "CodeIgniter", "Core Java", "REST API Design"],
   },
   {
     n: "03", title: "Data, Security & DevOps",
-    blurb: "Hardened data layers and zero-trust boundaries.",
+    blurb: "Dependable data layers, defensive authentication and repeatable environments.",
     tags: ["MySQL", "MariaDB", "Azure SQL", "Supabase (PostgreSQL)", "JWT", "OWASP Top 10", "Rate Limiting", "RBAC", "Docker", "Git"],
   },
   {
-    n: "04", title: "Leadership & Craft",
-    blurb: "Teams mentored, standards set, sprints shipped.",
-    tags: ["Technical Leadership", "Agile Delivery", "Code Review Culture", "Cross-Team Mentorship", "Stakeholder Communication"],
+    n: "04", title: "Technical Leadership",
+    blurb: "Raising team standards while keeping sprint delivery predictable.",
+    tags: ["Technical Leadership", "Agile Delivery", "Code Review Culture", "Mentorship", "Stakeholder Communication"],
   },
 ];
 
 const experience = [
   {
-    date: "2022 — Present", role: "Senior Web Developer · Assistant Manager", org: "Prudent Insurance Brokers",
+    start: "2022", end: "Present", label: "2022 — Present",
+    role: "Senior Web Developer · Assistant Manager", org: "Prudent Insurance Brokers",
     points: [
-      "Architected Angular frontend modules for a Retail Insurance Issuance Portal serving thousands of daily policy transactions, cutting load times with lazy loading and OnPush change detection.",
-      "Designed and maintained Python (Flask/SQL) backend APIs, collaborating with QA and product in daily standups for on-time sprint delivery.",
-      "Mentored junior developers through code reviews and architectural discussions, establishing team-wide OWASP-aligned coding standards.",
-      "Drove JWT authentication and role-based access control across microservice boundaries — zero unauthorized-access incidents since.",
+      "Designed Angular modules for a retail insurance issuance portal that handles thousands of policy transactions a day; lazy loading and OnPush change detection shortened page load times.",
+      "Built and maintain Flask/SQL APIs, syncing with QA and product in daily standups to keep sprint commitments on track.",
+      "Coach junior developers through code reviews and architecture discussions, and introduced OWASP-aligned coding standards across the team.",
+      "Led JWT authentication and role-based access control across microservice boundaries, with no unauthorized-access incidents since rollout.",
     ],
   },
   {
-    date: "2020 — 2022", role: "Junior PHP Web Developer", org: "Sharp Vision Consultants",
+    start: "2020", end: "2022", label: "2020 — 2022",
+    role: "Junior PHP Web Developer", org: "Sharp Vision Consultants",
     points: [
-      "Developed PHP/MySQL modules for client-facing applications, contributing to a 30% reduction in reported UI bugs through systematic QA collaboration.",
-      "Built responsive components with HTML5, CSS3, JavaScript and jQuery, improving cross-browser compatibility for enterprise clients.",
-      "Supported senior developers with feature delivery and hotfix deployments inside agile sprint cycles.",
+      "Delivered PHP/MySQL modules for client-facing applications and worked with QA to cut reported UI bugs by 30%.",
+      "Built responsive HTML5, CSS3, JavaScript and jQuery components that improved cross-browser behaviour for enterprise clients.",
+      "Supported senior engineers on feature work and hotfix releases inside agile sprints.",
     ],
   },
   {
-    date: "2019 — 2020", role: "Technical Trainer", org: "Livewire India",
+    start: "2019", end: "2020", label: "2019 — 2020",
+    role: "Technical Trainer", org: "Livewire India",
     points: [
-      "Delivered hands-on coding instruction in JavaScript, PHP and Java to undergraduate students with top session satisfaction scores.",
-      "Mentored students 1-on-1 from concept to deployment across 10+ college-level web projects.",
-    ],
-  },
-  {
-    date: "2019 — 2021", role: "Event Manager (Part-Time)", org: "Shining Leaf Events",
-    points: [
-      "Planned and executed online events end-to-end — budgets, vendor contracts, email campaigns and social outreach.",
+      "Taught JavaScript, PHP and Java to undergraduates in hands-on sessions that earned top satisfaction scores.",
+      "Mentored students one-to-one, taking more than ten college web projects from first idea to deployment.",
     ],
   },
 ];
@@ -66,105 +71,130 @@ const experience = [
 const projects = [
   {
     n: "01", tag: "Insurance · Full Stack", title: "Retail Policy Issuance Portal",
-    blurb: "A full-featured online insurance marketplace — motor vehicle search, multi-gateway payments, and an admin analytics backend tracking issued policies and revenue in real time.",
-    tags: ["PHP", "MySQL", "JavaScript", "jQuery", "HTML/CSS"], note: "Thousands of daily policy transactions",
+    blurb: "An online insurance marketplace with motor-vehicle search, multi-gateway payments and an admin analytics back end that tracks issued policies and revenue live.",
+    tags: ["PHP", "MySQL", "JavaScript", "jQuery", "HTML/CSS"], note: "Thousands of policy transactions a day",
   },
   {
     n: "02", tag: "Fintech · Platform Engineering", title: "Taabir — Crowdfunding Platform",
-    blurb: "A GoFundMe-style platform for campaign creation, global donations and story sharing, backed by a robust REST layer in Java Servlets handling concurrent sessions and secure financial flows.",
+    blurb: "A fundraising platform for creating campaigns, accepting global donations and sharing stories, powered by a Java Servlets REST layer built for concurrent sessions and safe payment flows.",
     tags: ["Angular", "Java Servlets", "MariaDB", "REST APIs"], note: "Concurrent sessions, secure money movement",
   },
   {
     n: "03", tag: "Security · Developer Tooling", title: "AuthWrap — JWT Auth Middleware",
-    blurb: "A reusable authentication wrapper for third-party API security with code-level rate limiting — plug-and-play architecture that secures new endpoints with near-zero configuration.",
-    tags: ["Python", "FastAPI", "Angular", "JWT"], note: "Abuse-proof endpoints out of the box",
+    blurb: "A drop-in authentication wrapper for securing third-party APIs, with built-in rate limiting, so new endpoints are protected with almost no configuration.",
+    tags: ["Python", "FastAPI", "Angular", "JWT"], note: "Abuse-resistant endpoints out of the box",
   },
   {
     n: "04", tag: "EdTech · Enterprise LMS", title: "Employee Training Management System",
-    blurb: "A Zoho Learn-style LMS with employee, department and training modules, task tracking and calendar integration — role-based views for HR admins, managers and learners.",
-    tags: ["Angular", "Flask", "MySQL", "RBAC"], note: "Adopted across departments, three role views",
+    blurb: "A learning-management system with employee, department and training modules, task tracking and calendar sync, plus tailored views for HR admins, managers and learners.",
+    tags: ["Angular", "Flask", "MySQL", "RBAC"], note: "Used across departments with three role views",
   },
 ];
+
+const githubIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.96.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.05.78 2.12v3.14c0 .3.21.66.79.55A11.52 11.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5Z"/></svg>`;
+
+// Structured data: helps search engines understand who this page is about.
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": `${CONTACT.liveSite}/#person`,
+    "name": "Adhyatamjot Singh",
+    "url": CONTACT.liveSite,
+    "jobTitle": "Full Stack Developer & Technical Lead",
+    "description": "Full stack web developer and technical lead in New Delhi with 6+ years of experience building secure Angular, Python and PHP platforms for insurance and fintech.",
+    "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" },
+    "worksFor": { "@type": "Organization", "name": "Prudent Insurance Brokers" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Indira Gandhi National Open University (IGNOU)" },
+    "knowsAbout": [
+      "Full stack web development", "Angular", "RxJS", "React", "TypeScript", "Python",
+      "FastAPI", "Flask", "PHP", "Java", "REST API design", "JWT authentication",
+      "Role-based access control", "OWASP", "MySQL", "Technical leadership", "Agile delivery",
+    ],
+    "sameAs": [CONTACT.github],
+  },
+};
 ---
 
 <Layout
-  title="Adhyatamjot Singh — Full Stack Developer, Bhangra Instructor & Emcee"
-  description="Portfolio of Adhyatamjot Singh — a Full Stack Web Developer and Technical Lead in New Delhi with 6+ years shipping enterprise products, who also teaches Bhangra and commands stages as an emcee."
+  title="Adhyatamjot Singh | Full Stack Developer & Tech Lead, Delhi"
+  description="Full Stack Developer & Technical Lead in New Delhi with 6+ years building secure Angular, FastAPI and Flask platforms for insurance and fintech teams."
   path="/"
 >
-  <section class="hero">
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+  <section class="hero" aria-labelledby="hero-title">
     <div class="bg-grid"></div>
     <div class="bg-glow"></div>
     <div class="hero-snippets" aria-hidden="true">
-      <span style="top:8%; left:6%;">&lt;motion.div /&gt;</span>
+      <span style="top:8%; left:6%;">&lt;app-root /&gt;</span>
       <span style="top:14%; right:8%;">await api.get()</span>
       <span style="top:42%; right:10%;">@OnPush</span>
       <span style="top:48%; left:9%;">{"{ jwt.verify }"}</span>
     </div>
+
     <div class="container hero-inner reveal">
-      <p class="hero-kicker">Full Stack Developer · Bhangra Instructor · Emcee</p>
-      <h1 class="main-heading">Code by day, rhythm by night — <span class="highlight">engineered</span> either way.</h1>
-      <p class="hero-sub">Scroll down for the manifesto, the tech arsenal, and six years of shipped work.</p>
-    </div>
-    <div class="info-box">
-      <div>
-        <p class="info-box-data">6+</p>
-        <small class="info-box-desc">Years Shipping</small>
-      </div>
-      <div>
-        <p class="info-box-data">4</p>
-        <small class="info-box-desc">Domains— Insurance, Fintech, more  </small>
-      </div>
-      <div>
-        <p class="info-box-data">10+</p>
-        <small class="info-box-desc">Student Projects Mentored</small>
-      </div>
-      <div>
-        <p class="info-box-data">3</p>
-        <small class="info-box-desc">Personas — Code, Dance, Mic</small>
+      <p class="hero-kicker">Full Stack Developer · Technical Lead · New Delhi</p>
+      <h1 id="hero-title">Full Stack Developer &amp; Technical Lead building <span class="highlight">secure, scalable</span> web platforms.</h1>
+      <p class="hero-sub">Six-plus years of turning complex business workflows — policy issuance, online fundraising, access control — into fast, maintainable software, and guiding the teams who build it.</p>
+      <div class="hero-cta-row">
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="#projects">See selected projects</a>
       </div>
     </div>
+
+    <div class="container">
+      <ul class="stats reveal" aria-label="Career highlights">
+        {stats.map((s) => (
+          <li class="stat">
+            <span class="stat-value">{s.value}</span>
+            <span class="stat-label">{s.label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
     <Ticker items={tickerItems} />
   </section>
 
-  <section class="section-pad" id="manifesto">
+  <section class="section-pad" id="about" aria-labelledby="about-title">
     <div class="container">
-      <p class="eyebrow reveal">01 // The Manifesto</p>
-      <h2 class="section-title reveal">The intersection of algorithmic precision &amp; raw human rhythm.</h2>
+      <p class="eyebrow reveal">01 // Profile</p>
+      <h2 id="about-title" class="section-title reveal">Engineering with a lead's mindset: clear standards, honest reviews, working software.</h2>
 
       <div class="two-col">
         <div class="manifesto-body reveal">
-          <p>I'm a Full Stack Web Developer and Technical Lead who has spent 6+ years shipping enterprise-grade products — from insurance issuance portals processing thousands of daily policies, to crowdfunding platforms moving real money across borders.</p>
-          <p>My toolbox runs deep: Angular with RxJS and modular architecture on the front, Python with FastAPI and Flask on the back, hardened with JWT, OWASP discipline and role-based access control. I lead teams the same way I write code — clear standards, honest reviews, no shortcuts.</p>
-          <p>And when the laptop closes, the dhol starts. I teach Bhangra, command stages as an emcee, and bring that same electric energy to everything I ship.</p>
+          <p>I'm a full stack web developer and technical lead based in New Delhi. Over six-plus years I've shipped production systems in demanding domains — an insurance issuance portal that processes thousands of policy transactions every day, and a crowdfunding platform that moves donations between supporters and campaigns around the world.</p>
+          <p>On the front end I work with Angular and RxJS in a modular, lazy-loaded architecture. On the back end it's Python with FastAPI and Flask, plus PHP and Java when a project calls for them. Security is part of the design from day one: JWT authentication, role-based access control and OWASP-guided practices rather than patches added at the end.</p>
+          <p>As a team lead I set coding standards, run reviews that teach instead of gatekeep, and keep sprints predictable by staying close to QA and product. I care as much about how a team ships as about what it ships.</p>
           <div class="tag-row" style="margin-top:24px;">
             <span class="tag">Full Stack Architecture</span>
-            <span class="tag">High-Concurrency APIs</span>
-            <span class="tag">OWASP-Secured Systems</span>
-            <span class="tag">Tech Leadership</span>
-            <span class="tag">Bhangra Choreography</span>
-            <span class="tag">Stage Command</span>
+            <span class="tag">REST API Design</span>
+            <span class="tag">Secure Authentication</span>
+            <span class="tag">Code Review &amp; Mentoring</span>
+            <span class="tag">Agile Delivery</span>
           </div>
         </div>
 
-        <aside class="reveal">
+        <aside class="reveal" aria-label="Education and certifications">
           <div class="side-panel">
-            <h4>Education</h4>
+            <h3 class="side-heading">Education</h3>
             <div class="side-entry">
               <div class="title">Master of Computer Applications (MCA)</div>
-              <div class="meta">IGNOU · 2023 — 2027 · In Progress</div>
+              <div class="meta">IGNOU · 2023 — 2027 · In progress</div>
             </div>
             <div class="side-entry">
               <div class="title">Bachelor of Computer Applications (BCA)</div>
               <div class="meta">IGNOU · First Division</div>
             </div>
             <div class="side-entry">
-              <div class="title">Diploma, Computer Science Engineering</div>
-              <div class="meta">G.N.D.I.T Rohini (BTE) · Founded Cultural &amp; Technical Clubs</div>
+              <div class="title">Diploma in Computer Science Engineering</div>
+              <div class="meta">G.N.D.I.T Rohini (BTE) · Founded cultural &amp; technical clubs</div>
             </div>
           </div>
           <div class="side-panel">
-            <h4>Certifications</h4>
+            <h3 class="side-heading">Certifications</h3>
             <ul class="cert-list">
               <li>Cisco Python Essentials</li>
               <li>Angular Fundamentals — Sololearn</li>
@@ -179,134 +209,222 @@ const projects = [
     </div>
   </section>
 
-  <section class="section-pad" style="background:var(--bg-soft); border-block:1px solid var(--panel-border);" id="stack">
+  <section class="section-pad alt-band" id="skills" aria-labelledby="skills-title">
     <div class="container">
-      <p class="eyebrow reveal">02 // Tech Arsenal</p>
-      <h2 class="section-title reveal">Engineered for speed, resilience, and sensory delight.</h2>
+      <p class="eyebrow reveal">02 // Tech Stack</p>
+      <h2 id="skills-title" class="section-title reveal">The tools I use to build fast, resilient and secure applications.</h2>
 
       <div class="card-grid">
         {techStacks.map((s) => (
-          <div class="card reveal">
+          <article class="card reveal">
             <div class="card-head">
               <h3>{s.title}</h3>
-              <span class="card-index">{s.n}</span>
+              <span class="card-index" aria-hidden="true">{s.n}</span>
             </div>
             <p>{s.blurb}</p>
-            <div class="tag-row">
-              {s.tags.map((t) => <span class="tag">{t}</span>)}
-            </div>
-          </div>
+            <ul class="tag-row">
+              {s.tags.map((t) => <li class="tag">{t}</li>)}
+            </ul>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section-pad" id="trajectory">
+  <section class="section-pad" id="experience" aria-labelledby="experience-title">
     <div class="container">
-      <p class="eyebrow reveal">03 // Trajectory</p>
-      <h2 class="section-title reveal">Six years of engineered impact, team by team.</h2>
+      <p class="eyebrow reveal">03 // Experience</p>
+      <h2 id="experience-title" class="section-title reveal">From PHP developer to technical lead: six years of shipping, team by team.</h2>
 
-      <div class="timeline">
+      <ol class="timeline">
         {experience.map((e) => (
-          <div class="timeline-item reveal">
-            <span class="timeline-dot"></span>
-            <div class="timeline-date">{e.date}</div>
+          <li class="timeline-item reveal">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="timeline-date">
+              <time datetime={e.start}>{e.start}</time> — {e.end === "Present" ? "Present" : <time datetime={e.end}>{e.end}</time>}
+            </p>
             <h3>{e.role}</h3>
-            <div class="timeline-org">{e.org}</div>
+            <p class="timeline-org">{e.org}</p>
             <ul>
               {e.points.map((p) => <li>{p}</li>)}
             </ul>
-          </div>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 
-  <section class="section-pad" style="background:var(--bg-soft); border-block:1px solid var(--panel-border);" id="artifacts">
+  <section class="section-pad alt-band" id="projects" aria-labelledby="projects-title">
     <div class="container">
-      <p class="eyebrow reveal">04 // Artifacts</p>
-      <h2 class="section-title reveal">Selected engineering works, built to hold production weight.</h2>
-      <p class="section-intro reveal">Four systems from the trenches — insurance, fintech, security tooling and EdTech.</p>
+      <p class="eyebrow reveal">04 // Projects</p>
+      <h2 id="projects-title" class="section-title reveal">Selected projects built to carry real production traffic.</h2>
+      <p class="section-intro reveal">Four systems across insurance, fintech, security tooling and EdTech.</p>
 
       <div class="card-grid">
         {projects.map((p) => (
-          <div class="card reveal">
+          <article class="card reveal">
             <div class="card-head">
               <div>
                 <p class="eyebrow" style="margin-bottom:10px;">{p.tag}</p>
                 <h3>{p.title}</h3>
               </div>
-              <span class="card-index" style="font-size:26px;">{p.n}</span>
+              <span class="card-index" style="font-size:26px;" aria-hidden="true">{p.n}</span>
             </div>
             <p>{p.blurb}</p>
-            <div class="tag-row" style="margin-bottom:18px;">
-              {p.tags.map((t) => <span class="tag">{t}</span>)}
+            <ul class="tag-row" style="margin-bottom:18px;">
+              {p.tags.map((t) => <li class="tag">{t}</li>)}
+            </ul>
+            <div class="project-foot">
+              <span class="project-note">{p.note}</span>
+              <a class="project-link" href={CONTACT.github} target="_blank" rel="noopener noreferrer" aria-label={`More work like ${p.title} on GitHub`}>
+                <Fragment set:html={githubIcon} /> GitHub
+              </a>
             </div>
-            <div style="display:flex; align-items:center; justify-content:space-between; padding-top:16px; border-top:1px solid var(--panel-border);">
-              <span style="color:var(--accent); font-size:13.5px;">{p.note}</span>
-              <span style="font-family:var(--font-mono); font-size:12.5px; color:var(--text-muted); display:flex; align-items:center; gap:6px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.96.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.05.78 2.12v3.14c0 .3.21.66.79.55A11.52 11.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5Z"/></svg>
-                GitHub
-              </span>
-            </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="cta-band">
+  <section class="cta-band" id="contact" aria-labelledby="contact-title">
     <div class="container reveal">
-      <p class="eyebrow" style="justify-content:center;">05 // Reach Out</p>
-      <h2>Let's engineer something legendary.</h2>
-      <p>No forms, no friction. One click and your mail client opens — or copy the address and say hello your way.</p>
+      <p class="eyebrow" style="justify-content:center;">05 // Contact</p>
+      <h2 id="contact-title">Hiring a lead or building something reliable? Let's talk.</h2>
+      <p>Send an email or start a quick WhatsApp chat — whichever suits you.</p>
 
-      <div class="contact-grid" style="max-width:720px; margin-inline:auto; text-align:left;">
-        <a class="contact-card" href="https://github.com/CssAvenger" target="_blank" rel="noopener noreferrer">
+      <address class="contact-grid" style="max-width:720px; margin-inline:auto; text-align:left; font-style:normal;">
+        <a class="contact-card" href={CONTACT.github} target="_blank" rel="noopener noreferrer">
           <span class="contact-left">
-            <span class="contact-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.96.57.1.78-.25.78-.55v-2.1c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.05.78 2.12v3.14c0 .3.21.66.79.55A11.52 11.52 0 0 0 23.5 12c0-6.35-5.15-11.5-11.5-11.5Z"/></svg>
-            </span>
+            <span class="contact-icon"><Fragment set:html={githubIcon} /></span>
             <span>
-              <div class="title">GitHub</div>
-              <div class="value">@CssAvenger</div>
+              <span class="title">GitHub</span>
+              <span class="value">@CssAvenger</span>
             </span>
           </span>
         </a>
-        <a class="contact-card" href="https://adhyatamjot-singh.eu.org" target="_blank" rel="noopener noreferrer">
+        <a class="contact-card" href={CONTACT.liveSite} target="_blank" rel="noopener noreferrer">
           <span class="contact-left">
             <span class="contact-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20Z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20Z"/></svg>
             </span>
             <span>
-              <div class="title">Live Site</div>
-              <div class="value">adhyatamjot-singh.eu.org</div>
+              <span class="title">Website</span>
+              <span class="value">adhyatamjot-singh.eu.org</span>
             </span>
           </span>
         </a>
-        <a class="contact-card" href="mailto:adhyatamjot.singh@gmail.com">
+        <a class="contact-card" href={mailLink("Project or hiring enquiry")}>
           <span class="contact-left">
             <span class="contact-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
             </span>
             <span>
-              <div class="title">Email</div>
-              <div class="value">adhyatamjot.singh@gmail.com</div>
+              <span class="title">Email</span>
+              <span class="value">{CONTACT.email}</span>
             </span>
           </span>
         </a>
-        <div class="contact-card" style="cursor:default;">
+        <a class="contact-card" href={waLink("Hi Adhyatamjot, I came across your portfolio and would like to talk about a project or role.")} target="_blank" rel="noopener noreferrer">
           <span class="contact-left">
             <span class="contact-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.1-.6l.4-.5c.1-.1.2-.3.2-.4.1-.1.1-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
             </span>
             <span>
-              <div class="title">Base</div>
-              <div class="value">New Delhi, India</div>
+              <span class="title">WhatsApp</span>
+              <span class="value">Start a chat</span>
             </span>
           </span>
-        </div>
-      </div>
+        </a>
+        <a class="contact-card"  target="_blank" rel="noopener noreferrer">
+          <span class="contact-left">
+            <span class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span>
+             <span class="title">Based in</span>
+              <span class="value">{CONTACT.base}</span>
+            </span>
+          </span>
+        </a>
+        <a class="contact-card" href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer">
+          <span class="contact-left">
+            <span class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <span>
+             <span class="title">LinkedIn</span>
+              <span class="value">Adhyatamjot Singh</span>
+            </span>
+          </span>
+        </a>
+        
+      </address>
     </div>
   </section>
+
+  <style>
+    .hero-inner h1 .highlight { color: var(--accent); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 56px auto 0;
+      max-width: 960px;
+      position: relative;
+    }
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-md);
+      padding: 20px 18px;
+      text-align: left;
+    }
+    .stat-value {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label { display: block; font-size: 13.5px; color: var(--text-muted); line-height: 1.45; }
+    @media (max-width: 820px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 460px) { .stats { grid-template-columns: 1fr; } }
+
+    .alt-band { background: var(--bg-soft); border-block: 1px solid var(--panel-border); }
+
+    .side-heading {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 16px;
+    }
+
+    .project-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--panel-border);
+    }
+    .project-note { color: var(--accent); font-size: 13.5px; }
+    .project-link {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .project-link:hover { color: var(--accent); }
+
+    ul.tag-row { list-style: none; padding: 0; margin: 0; }
+    .contact-card .title, .contact-card .value { display: block; }
+  </style>
 </Layout>

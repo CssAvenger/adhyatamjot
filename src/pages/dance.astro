@@ -2,9 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import Ticker from "../components/Ticker.astro";
 import bhangraParade from "../assets/images/dance/solo-dance-2.jpeg";
-import festivalHeaddress from "../assets/images/dance/solo-dance-1.jpeg";
-import classVideo from "../assets/images/dance/class.mp4"
+import classVideo from "../assets/images/dance/class.mp4";
+import dholVideo from "../assets/images/dance/dancer.mp4";
 import { Image } from "astro:assets";
+import { CONTACT, waLink } from "../data/contact";
 
 const tickerItems = [
   "CHOREOGRAPHY", "WORKSHOPS", "FOLK BEATS", "CROWD ENERGY",
@@ -15,14 +16,32 @@ const offerings = [
   {
     n: "01", title: "Live Stage Performances",
     blurb: "High-energy Bhangra sets for festivals, weddings and corporate nights.",
+    icon: `<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>`,
   },
   {
     n: "02", title: "Workshops & Training",
     blurb: "Group classes and 1-on-1 coaching — footwork, stamina, stage presence.",
+    icon: `<path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/>`,
   },
   {
     n: "03", title: "Choreography for Teams",
     blurb: "Full routine design for college crews and event troupes, concept to curtain.",
+    icon: `<circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 21v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/><path d="M15.5 14a4 4 0 0 1 4.5 4v1"/>`,
+  },
+];
+
+const whyDance = [
+  {
+    title: "Trained in folk, built on the street",
+    blurb: "Formal Bhangra training layered over years of real parade and arena performance — not just studio polish.",
+  },
+  {
+    title: "Built for big crowds",
+    blurb: "Festival arenas, wedding floors, corporate stages — I read the room and scale the energy to fill it.",
+  },
+  {
+    title: "Routines that travel",
+    blurb: "Choreography designed to land whether it's a 3-person showcase or a 30-person crew.",
   },
 ];
 ---
@@ -32,89 +51,556 @@ const offerings = [
   description="Book high-energy Bhangra stage performances, group workshops, and full team choreography with Adhyatamjot Singh — for festivals, weddings and corporate events in New Delhi and beyond."
   path="/dance"
 >
-  <section class="hero" style="padding-bottom:0;">
-    <div class="bg-grid"></div>
-    <div class="bg-glow"></div>
-    <Ticker items={tickerItems} />
-  </section>
+  <div class="dance-theme">
+    <section class="hero beat-hero">
+      <div class="beat-glow"></div>
+      <div class="beat-sparkle"></div>
+      <div class="container hero-inner reveal">
+        <p class="hero-kicker">The Dancer</p>
+        <h1 class="main-heading">Bhangra that fills the floor <br /> <span class="highlight">and empties the chairs.</span></h1>
+        <p class="hero-sub">High-energy folk performances, workshops and full team choreography — festivals, weddings and corporate stages, all across North India.</p>
+        <a class="btn btn-primary" href={waLink("Hey, I'm interested in booking you for an event.")} style="margin-top:30px;">
+          Check Availability
+        </a>
+      </div>
+      <Ticker items={tickerItems} separator="♪" />
+    </section>
 
-  <section class="section-pad" id="offerings">
-    <div class="container">
-      <p class="eyebrow reveal">D.01 // Offerings</p>
-      <h2 class="section-title reveal">Three ways the beat finds you.</h2>
+    <section class="section-pad" id="offerings">
+      <div class="container">
+        <p class="eyebrow reveal">D.01 — Offerings</p>
+        <h2 class="section-title reveal">Three ways the beat finds you.</h2>
 
-      <div class="card-grid" style="grid-template-columns:repeat(3,1fr);">
-        {offerings.map((o) => (
-          <div class="card reveal">
-            <div class="card-head">
-              <div class="icon-badge">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <div class="card-grid" style="grid-template-columns:repeat(3,1fr);">
+          {offerings.map((o) => (
+            <div class="card reveal">
+              <div class="card-head">
+                <div class="icon-badge" set:html={`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${o.icon}</svg>`} />
+                <span class="card-index">{o.n}</span>
               </div>
-              <span class="card-index">{o.n}</span>
+              <h3>{o.title}</h3>
+              <p>{o.blurb}</p>
             </div>
-            <h3>{o.title}</h3>
-            <p>{o.blurb}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section-pad" style="background:var(--bg-soft); border-block:1px solid var(--panel-border);" id="gallery">
-    <div class="container">
-      <p class="eyebrow reveal">D.02 // The Gallery</p>
-      <h2 class="section-title reveal">Sweat, swagger and stage light.</h2>
-      <p class="section-intro reveal">Dashed frames and reel slots are reserved placeholders — swap in your own photos and video embeds whenever you're ready.</p>
+    <section class="section-pad" style="background:var(--bg-soft); border-block:1px solid var(--panel-border);" id="gallery">
+      <div class="container">
+        <p class="eyebrow reveal">D.02 — The Gallery</p>
+        <h2 class="section-title reveal">Sweat, swagger and stage light.</h2>
+        <p class="section-intro reveal">Dashed frames and reel slots are reserved placeholders — swap in your own photos and video embeds whenever you're ready.</p>
 
-      <div class="gallery">
-        <div class="gallery-item tall reveal">
-          <Image src={bhangraParade} alt="Sufi and folk Bhangra showcase at a main arena performance" width={480} height={620} />
-          <div class="gallery-caption">
-            <span class="label">Sufi &amp; Folk Bhangra Showcase — Main Arena</span>
-            <span class="pill-tag">Live Performance</span>
+        <div class="gallery">
+          <div class="gallery-item tall reveal">
+            <Image src={bhangraParade} alt="Sufi and folk Bhangra showcase at a main arena performance" width={480} height={620} />
+            <div class="gallery-caption">
+              <span class="label">Folk Bhangra Showcase — Main Arena</span>
+              <span class="pill-tag">Live Performance</span>
+            </div>
+          </div>
+          <div class="gallery-item mid placeholder reveal">
+            <div class="gallery-video">
+
+                <video
+                  id="video-player"
+                  playsinline
+                  loop
+                >
+                  <source
+                    src={classVideo}
+                    type="video/mp4"
+                  />
+                </video>
+
+                <span
+                  class="pill-tag"
+                  style="align-self:flex-start;"
+                >
+                  Master classes
+                </span>
+
+                <span class="filename">
+                  SHOWREEL_01.MP4
+                </span>
+
+                <button
+                  type="button"
+                  class="play"
+                  id="video-btn"
+                  aria-label="Play video"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+
+                <small style="text-align:center;">
+                  Your hosting showreel — embed the crowd-moment video
+                </small>
+
+              </div>
+          </div>
+          <div class="gallery-item mid placeholder reveal">
+            <div class="gallery-video">
+
+                <video
+                  id="video-player2"
+                  playsinline
+                  loop
+                >
+                  <source
+                    src={dholVideo}
+                    type="video/mp4"
+                  />
+                </video>
+
+                <span
+                  class="pill-tag"
+                  style="align-self:flex-start;"
+                >
+                  Stage Show
+                </span>
+
+                <span class="filename">
+                  High-Tempo Live Enactment
+                </span>
+
+                <button
+                  type="button"
+                  class="play"
+                  id="video-btn2"
+                  aria-label="Play video"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </button>
+
+                <small style="text-align:center;">
+                  Your hosting showreel — embed the crowd-moment video
+                </small>
+
+              </div>
           </div>
         </div>
 
-        <div class="gallery-item mid placeholder reveal">
-          <div class="gallery-video">
-            <span class="pill-tag" style="align-self:flex-start;">Video Slot</span>
-            <video src={classVideo}   class="gallery-video"></video>
-            <span class="play">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <small style="text-align:center;">Your performance reel — drop a YouTube/Vimeo embed here</small>
-          </div>
-        </div>
+        <a
+          class="btn btn-primary" id="see-more-btn"
+          href={CONTACT.instagram}
+          style="margin: 30px auto !important; display:block; margin: auto; text-align:center;"
+        >
+          See more Videos & Photos
 
-        <div class="gallery-item mid reveal">
-          <Image src={festivalHeaddress} alt="High-tempo live enactment and solo choreography at a street festival" width={480} height={340} />
-          <div class="gallery-caption">
-            <span class="label">High-Tempo Live Enactment &amp; Solo Choreo</span>
-            <span class="pill-tag">Stage Show</span>
-          </div>
-        </div>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path
+              d="M5 12h14M13 6l6 6-6 6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      </div>  
+    </section>
 
-        <!-- <div class="gallery-item placeholder reveal" style="grid-column: 1;">
-          <div class="gallery-video">
-            <span class="icon-badge" style="margin:auto;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-            </span>
-            <small style="text-align:center;">Reserved slot — crowd-energy shot goes here</small>
-            <span class="pill-tag" style="align-self:center;">Photo Slot</span>
-          </div>
-        </div> -->
+    <section class="section-pad" id="why-dance">
+      <div class="container">
+        <p class="eyebrow reveal">D.03 — Why Dance With Me</p>
+        <h2 class="section-title reveal">Trained technique, street-earned energy.</h2>
+
+        <div class="card-grid" style="grid-template-columns:repeat(3,1fr); margin-top:44px;">
+          {whyDance.map((w) => (
+            <div class="card reveal">
+              <h3>{w.title}</h3>
+              <p>{w.blurb}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-band">
-    <div class="container reveal">
-      <h2>Want the floor shaking at your event?</h2>
-      <p>Weddings, festivals, corporate nights — drop a line and let's choreograph the chaos.</p>
-      <a class="btn btn-primary" href="mailto:adhyatamjot.singh@gmail.com?subject=Bhangra%20booking%20inquiry">
-        Book the Beat
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-    </div>
-  </section>
+    <section class="cta-band confetti">
+      <div class="container reveal">
+        <h2>Want the floor shaking at your event?</h2>
+        <p>Weddings, festivals, corporate nights — drop a line and let's choreograph the chaos.</p>
+        <a class="btn btn-primary" href="mailto:adhyatamjot.singh@gmail.com?subject=Bhangra%20booking%20inquiry">
+          Book the Beat
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </section>
+  </div>
+  <script>
+    const videoPlayer =
+      document.querySelector<HTMLVideoElement>("#video-player");
+    
+    const videoPlayer2 =
+      document.querySelector<HTMLVideoElement>("#video-player2");
+
+    const playBtn =
+      document.querySelector<HTMLButtonElement>("#video-btn");
+    
+    const playBtn2 =
+      document.querySelector<HTMLButtonElement>("#video-btn2");
+
+    if (videoPlayer && playBtn) {
+
+      playBtn.addEventListener("click", async () => {
+
+        if (videoPlayer.paused) {
+
+          try {
+            await videoPlayer.play();
+
+            playBtn.innerHTML = `
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+              </svg>
+            `;
+
+            playBtn.setAttribute("aria-label", "Pause video");
+
+          } catch (error) {
+            console.error("Video could not be played:", error);
+          }
+
+        } else {
+
+          videoPlayer.pause();
+
+          playBtn.innerHTML = `
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          `;
+
+          playBtn.setAttribute("aria-label", "Play video");
+        }
+
+      });
+
+
+      /*
+       * Keep the icon synchronized if the video
+       * is paused/played by something other than
+       * the custom button.
+       */
+
+      videoPlayer.addEventListener("play", () => {
+
+        playBtn.innerHTML = `
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+          </svg>
+        `;
+
+        playBtn.setAttribute("aria-label", "Pause video");
+      });
+
+
+      videoPlayer.addEventListener("pause", () => {
+
+        playBtn.innerHTML = `
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        `;
+
+        playBtn.setAttribute("aria-label", "Play video");
+      });
+
+    }
+
+    if (videoPlayer2 && playBtn2) {
+
+      playBtn2.addEventListener("click", async () => {
+
+        if (videoPlayer2.paused) {
+
+          try {
+            await videoPlayer2.play();
+
+            playBtn2.innerHTML = `
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+              </svg>
+            `;
+
+            playBtn2.setAttribute("aria-label", "Pause video");
+
+          } catch (error) {
+            console.error("Video could not be played:", error);
+          }
+
+        } else {
+
+          videoPlayer2.pause();
+
+          playBtn2.innerHTML = `
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          `;
+
+          playBtn2.setAttribute("aria-label", "Play video");
+        }
+
+      });
+
+
+      /*
+       * Keep the icon synchronized if the video
+       * is paused/played by something other than
+       * the custom button.
+       */
+
+      videoPlayer2.addEventListener("play", () => {
+
+        playBtn2.innerHTML = `
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+          </svg>
+        `;
+
+        playBtn2.setAttribute("aria-label", "Pause video");
+      });
+
+
+      videoPlayer2.addEventListener("pause", () => {
+
+        playBtn2.innerHTML = `
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        `;
+
+        playBtn2.setAttribute("aria-label", "Play video");
+      });
+
+    }
+
+  </script>
+
+  <style>
+    /* ---- Vibrant "festival" theme, scoped to the Dance page only ---- */
+    .dance-theme {
+      --accent: #ff5d3a;
+      --accent2: #ff2e87;
+      --accent-soft: rgba(255, 93, 58, 0.14);
+      --accent-glow: rgba(255, 93, 58, 0.4);
+      --panel: #170a10;
+      --panel-border: rgba(255, 140, 110, 0.12);
+      --panel-border-hover: rgba(255, 93, 58, 0.45);
+      --bg-soft: #130810;
+      --font-heading: "Archivo Black", "Arial Black", sans-serif;
+      --font-mono: "Poppins", system-ui, sans-serif;
+    }
+    .dance-theme h1,
+    .dance-theme h2,
+    .dance-theme h3 { letter-spacing: -0.01em; }
+    .dance-theme .eyebrow,
+    .dance-theme .pill-tag,
+    .dance-theme .card-index,
+    .dance-theme .ticker-item {
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      font-style: normal;
+    }
+    .dance-theme .btn { font-style: normal; letter-spacing: 0.02em; font-family: "Poppins", sans-serif; font-weight: 700; }
+    .dance-theme .btn-primary { color: #2b0a06; }
+    .dance-theme .highlight {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Hero: festival glow instead of the dev-portfolio code grid */
+    .beat-hero { position: relative; padding-bottom: 0; text-align: center; }
+    .beat-hero .bg-grid, .beat-hero .bg-glow { display: none; }
+    .beat-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 40% 45% at 30% 10%, rgba(255, 93, 58, 0.3), transparent 70%),
+        radial-gradient(ellipse 40% 45% at 72% 16%, rgba(255, 46, 135, 0.26), transparent 70%);
+      pointer-events: none;
+    }
+    .beat-sparkle {
+      position: absolute;
+      inset: 0;
+      opacity: 0.5;
+      pointer-events: none;
+      background-image:
+        radial-gradient(rgba(255, 220, 180, 0.5) 1.5px, transparent 1.5px),
+        radial-gradient(rgba(255, 220, 180, 0.35) 1.5px, transparent 1.5px);
+      background-size: 90px 90px, 140px 140px;
+      background-position: 0 0, 45px 60px;
+      -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 15%, black 30%, transparent 85%);
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 15%, black 30%, transparent 85%);
+    }
+    .beat-hero .hero-inner { position: relative; }
+
+    /* Real video tile in the gallery */
+    .gallery-item.video-tile video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Confetti strip on the final CTA */
+    .cta-band.confetti { position: relative; }
+    .cta-band.confetti::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(255, 93, 58, 0.18) 2px, transparent 2px),
+        radial-gradient(rgba(255, 46, 135, 0.16) 2px, transparent 2px);
+      background-size: 60px 60px, 80px 80px;
+      background-position: 0 0, 30px 40px;
+      -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+      mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+      pointer-events: none;
+    }
+
+    
+  .gallery-video {
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+
+  .gallery-video video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+
+  .gallery-video::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.3);
+
+    pointer-events: none;
+
+    z-index: 1;
+  }
+
+
+  .gallery-video .pill-tag,
+  .gallery-video .filename,
+  .gallery-video .play,
+  .gallery-video small {
+    position: relative;
+    z-index: 2;
+  }
+
+
+  .gallery-video .filename {
+    display: block;
+  }
+
+
+  .gallery-video small {
+    display: block;
+  }
+
+   @media (min-width: 601px) {
+
+     #see-more-btn {
+      width: 30%;
+    }
+
+  }
+  @media (max-width: 600px) {
+
+  
+    #see-more-btn {
+      width: 100%;
+    }
+
+  }
+  </style>
 </Layout>

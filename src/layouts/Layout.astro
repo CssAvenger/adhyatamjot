@@ -2,6 +2,7 @@
 import { ClientRouter } from "astro:transitions";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import { getPageTheme } from "../data/pageThemes";
 
 interface Props {
   title: string;
@@ -12,14 +13,14 @@ interface Props {
 const { title, description, path = "/" } = Astro.props;
 const canonicalURL = new URL(path, Astro.site);
 const ogImage = new URL("/og-image.jpg", Astro.site);
+const theme = getPageTheme(path);
 ---
-
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
 
@@ -44,7 +45,7 @@ const ogImage = new URL("/og-image.jpg", Astro.site);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Archivo+Black&family=Poppins:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -65,11 +66,21 @@ const ogImage = new URL("/og-image.jpg", Astro.site);
     </style>
   </head>
   <body>
-    <Nav />
-    <main transition:name="page" transition:animate="none">
+    <Nav
+      accent={theme.accent}
+      accentSoft={theme.accentSoft}
+      accentGlow={theme.accentGlow}
+      onAccent={theme.onAccent}
+      hideResume={path !== '/'}
+    />
+    <main style={`--accent:${theme.accent}; --accent-soft:${theme.accentSoft}; --accent-glow:${theme.accentGlow};`} transition:name="page" transition:animate="none">
       <slot />
     </main>
-    <Footer />
+    <Footer
+      accent={theme.accent}
+      accentGlow={theme.accentGlow}
+      isPortfolio={path === "/"}
+    />
 
     <script>
       // Adorable pop-in reveal for sections as they scroll into view.
