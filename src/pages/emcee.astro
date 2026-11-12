@@ -6,43 +6,137 @@ import { Image } from "astro:assets";
 
 import keynoteHost from "../assets/images/emcee/black.jpg";
 import weddingGala from "../assets/images/emcee/green.jpeg";
+import singlingB from "../assets/images/emcee/emceeb.jpeg"
 import videoSlot from "../assets/images/emcee/emcee23.mp4";
+import akhadaSlot from "../assets/images/emcee/akhada.mp4";
+import boliSlot from "../assets/images/emcee/boli.mp4";
+
+const pageTitle =
+  "Emcee & Anchor in Delhi NCR | Weddings, Sangeets, Corporate Events | Adhyatamjot Singh";
+const pageDescription =
+  "Delhi-based emcee and anchor for sangeets, weddings, corporate events, college fests and dance competitions. Hosts in Hindi, English and Punjabi. Travels across India.";
 
 const tickerItems = [
+  "SANGEETS & WEDDINGS",
+  "CORPORATE EVENTS",
+  "DANCE COMPETITIONS",
   "COLLEGE FESTS",
-  "AWARD NIGHTS",
-  "PRODUCT LAUNCHES",
-  "CROWD CONTROL",
-  "BILINGUAL HOSTING",
-  "STAGE CRAFT",
+  "LIVE BAND NIGHTS",
+  "HINDI · ENGLISH · PUNJABI",
+];
+
+const stats = [
+  { value: "50+", label: "live shows on stage with multiple DJ Based Bands" },
+  { value: "3", label: "languages: Hindi, English, Punjabi" },
+  { value: "Pan-India", label: "based in Delhi, happy to travel" },
 ];
 
 const roster = [
   {
-    n: "01",
-    title: "Corporate Summits & Town Halls",
+    title: "Weddings & Sangeets",
     blurb:
-      "Keynote intros, panel moderation, award handovers — timed to the second.",
+      "Family introductions, couple games, dance-off moments and smooth transitions. Everyone from the dadi to the college cousins stays part of the night.",
   },
   {
-    n: "02",
-    title: "Cultural Festivals & College Fests",
+    title: "Dance Competitions & Talent Shows",
     blurb:
-      "High-decibel crowd work, artist introductions, seamless schedule recovery.",
+      "I've hosted dance competitions, so I know how to build up a performance, keep judges and schedules on track, and keep the audience loud between acts.",
   },
   {
-    n: "03",
-    title: "Weddings & Family Galas",
+    title: "Corporate Events & Award Nights",
     blurb:
-      "Warm, bilingual hosting in English, Hindi and Punjabi — every generation engaged.",
+      "Annual days, town halls, panels and award handovers. Clear, warm and on time, with enough energy to wake up a post-lunch room.",
   },
   {
-    n: "04",
+    title: "College Fests & Cultural Nights",
+    blurb:
+      "Big crowds, tight schedules and artist introductions. I stay calm when a slot shifts and keep the crowd with us.",
+  },
+  {
+    title: "Live Band & Concert Nights",
+    blurb:
+      "After 50+ shows in multiple DJ Based Bands, I know how to work with sound, lights and musicians, and how to keep a packed floor moving.",
+  },
+  {
     title: "Product Launches & Brand Nights",
     blurb:
-      "Scripted precision with room for the unscripted moment that makes the night.",
+      "A scripted flow that respects your brand, with room for the unscripted moment people remember.",
   },
 ];
+
+const steps = [
+  {
+    title: "Tell me about the event",
+    text: "Share the date, city, venue, crowd and the kind of evening you want. A quick WhatsApp message is enough.",
+  },
+  {
+    title: "We plan the flow together",
+    text: "I read your run-of-show, suggest games or segments if you'd like them, and write the script with you.",
+  },
+  {
+    title: "I show up early and host",
+    text: "Sound check, a word with the DJ and the planner, and then I take care of the mic so you can enjoy your event.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Which languages do you host in?",
+    a: "Hindi, English and Punjabi. I switch between them as the crowd needs, so guests of every age feel included.",
+  },
+  {
+    q: "Do you travel outside Delhi?",
+    a: "Yes. I'm based in New Delhi and happy to host destination weddings and corporate events in other cities, including Jaipur, Udaipur and Jodhpur. Travel and stay are usually arranged by the client.",
+  },
+  {
+    q: "What kinds of events do you host?",
+    a: "Weddings and sangeets, corporate events and award nights, college fests, dance competitions, live band nights and product launches.",
+  },
+  {
+    q: "How far ahead should I book?",
+    a: "As early as you can, especially for wedding season weekends and festival dates. If your date is close, message me anyway and I'll tell you honestly whether I'm free.",
+  },
+  {
+    q: "How much does it cost?",
+    a: "It depends on the event type, duration, city and how much planning is involved. Send me the details on WhatsApp and I'll reply with a clear quote.",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      name: "Adhyatamjot Singh, Event Emcee & Anchor",
+      description: pageDescription,
+      url: `${CONTACT.liveSite}/emcee`,
+      image: `${CONTACT.liveSite}/og-image.jpg`,
+      sameAs: [CONTACT.instagram],
+      areaServed: [
+        { "@type": "City", name: "Delhi" },
+        { "@type": "AdministrativeArea", name: "Delhi NCR" },
+        { "@type": "AdministrativeArea", name: "Rajasthan" },
+        { "@type": "Country", name: "India" },
+      ],
+      knowsLanguage: ["Hindi", "English", "Punjabi"],
+      serviceType: [
+        "Wedding emcee",
+        "Sangeet anchor",
+        "Corporate event host",
+        "College fest anchor",
+        "Dance competition host",
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
 
 const instagramIcon = `
 <svg
@@ -110,13 +204,18 @@ const micIcon = `
   <circle cx="16" cy="7" r="5" />
 </svg>
 `;
+
+const bookMsg =
+  "Hi Adhyatamjot, I'd like to check your availability for an event. Date: , City: , Event type: ";
 ---
 
 <Layout
-  title="Event Emcee & Host — Corporate, Weddings & Festivals | Adhyatamjot Singh"
-  description="Book Adhyatamjot Singh as your event emcee — bilingual hosting for corporate summits, college fests, weddings and product launches, with crowd control and stage craft honed over years on the mic."
+  title={pageTitle}
+  description={pageDescription}
   path="/emcee"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
   <div class="emcee-theme">
 
     <!-- HERO -->
@@ -125,91 +224,48 @@ const micIcon = `
       <div class="stage-beams"></div>
 
       <div class="container hero-inner reveal">
-        <p class="hero-kicker">The Emcee</p>
+        <p class="hero-kicker">Event emcee &amp; anchor in Delhi NCR</p>
 
         <h1 class="main-heading">
-          Commanding rooms,
+          The host who keeps
           <br />
-          <span class="highlight">one word at a time.</span>
+          <span class="highlight">your whole room with you.</span>
         </h1>
 
         <p class="hero-sub">
-          Corporate summits, cultural festivals, weddings and brand nights —
-          hosted with timing, warmth and just the right amount of trouble.
-          English, Hindi and Punjabi on tap.
+          I'm Adhyatamjot, a Delhi-based emcee for sangeets, weddings,
+          corporate evenings, college fests and dance competitions. After 50+
+          live shows on stage with multiple DJ Based Bands, a big, loud crowd is where I'm
+          most at home. I host in Hindi, English and Punjabi.
         </p>
 
         <div class="hero-cta-row">
-          <a
-            class="btn btn-primary"
-            href={waLink("Hey, I'm interested in booking you for an event.")}
-          >
-            Check Availability
+          <a class="btn btn-primary" href={waLink(bookMsg)}>
+            Check my date on WhatsApp
           </a>
 
-          <a class="btn btn-ghost" href="#contact">
-            Get in touch
+          <a class="btn btn-ghost" href="#on-stage">
+            Watch me host
           </a>
         </div>
+
+        <ul class="stat-row" aria-label="Quick facts">
+          {
+            stats.map((s) => (
+              <li>
+                <strong>{s.value}</strong>
+                <span>{s.label}</span>
+              </li>
+            ))
+          }
+        </ul>
       </div>
 
       <Ticker items={tickerItems} separator="✦" />
     </section>
 
 
-    <!-- EVENT ROSTER -->
-    <section class="section-pad" id="roster">
-      <div class="container">
-
-        <p class="eyebrow reveal">
-          M.01 — Event Roster
-        </p>
-
-        <h2 class="section-title reveal">
-          Rooms I've held, formats I own.
-        </h2>
-
-        <div
-          style="display:flex; flex-direction:column; gap:14px; margin-top:44px;"
-        >
-          {
-            roster.map((r) => (
-              <div class="card roster-row reveal">
-
-                <div class="roster-row-left">
-
-                  <span
-                    class="icon-badge"
-                    style="margin:0; flex-shrink:0;"
-                    set:html={micIcon}
-                  />
-
-                  <div>
-                    <h3 style="margin-bottom:4px;">
-                      {r.title}
-                    </h3>
-
-                    <p style="margin:0;">
-                      {r.blurb}
-                    </p>
-                  </div>
-
-                </div>
-
-                <span class="card-index roster-number">
-                  {r.n}
-                </span>
-
-              </div>
-            ))
-          }
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ON STAGE -->
+    <!-- ON STAGE (moved up for first impression) -->
     <section
       class="section-pad"
       style="background:var(--bg-soft); border-block:1px solid var(--panel-border);"
@@ -217,75 +273,35 @@ const micIcon = `
     >
       <div class="container">
 
-        <p class="eyebrow reveal">
-          M.02 — On Stage
-        </p>
-
         <h2 class="section-title reveal">
-          Spotlights, punchlines and full houses.
+          See how a room feels when I'm on the mic.
         </h2>
 
         <p class="section-intro reveal">
-          Dashed frames and showreel slots are reserved placeholders —
-          drop in your stage photos and hosting videos anytime.
+          A few moments from the stage. Tap play on the video to see me work a
+          live crowd, and visit Instagram for more full-length clips.
         </p>
 
         <div class="gallery">
-
-          <!-- PHOTO -->
-          <div class="gallery-item tall reveal">
-
-            <Image
-              src={keynoteHost}
-              alt="Keynote host silhouetted on stage at a tech summit"
-              width={480}
-              height={620}
-            />
-
-            <div class="gallery-caption">
-              <span class="label">
-                Keynote Host &amp; Tech Summit Anchor
-              </span>
-
-              <span class="pill-tag">
-                Corporate
-              </span>
-            </div>
-
-          </div>
-
-
-          <!-- VIDEO -->
-          <div class="gallery-item mid placeholder reveal">
-
+          <div class="gallery-item mid reveal">
             <div class="gallery-video">
-
               <video
-                id="video-player"
+                class="video-player"
                 playsinline
                 loop
+                preload="metadata"
+                aria-label="Adhyatamjot Singh hosting a live crowd"
               >
-                <source
-                  src={videoSlot}
-                  type="video/mp4"
-                />
+                <source src={videoSlot} type="video/mp4" />
               </video>
 
-              <span
-                class="pill-tag"
-                style="align-self:flex-start;"
-              >
-                Video Slot
-              </span>
-
-              <span class="filename">
-                SHOWREEL_01.MP4
+              <span class="pill-tag" style="align-self:flex-start;">
+                Live crowd
               </span>
 
               <button
                 type="button"
                 class="play"
-                id="video-btn"
                 aria-label="Play video"
               >
                 <svg
@@ -299,61 +315,216 @@ const micIcon = `
                 </svg>
               </button>
 
-              <small style="text-align:center;">
-                Your hosting showreel — embed the crowd-moment video
-              </small>
-
+              <span class="label" style="position:relative; z-index:2;">
+                Working a live crowd
+              </span>
             </div>
+          </div>
+          <div class="gallery-item mid reveal">
+            <div class="gallery-video">
+              <video
+                class="video-player"
+                playsinline
+                loop
+                preload="metadata"
+                aria-label="Adhyatamjot Singh hosting a live crowd"
+              >
+                <source src={akhadaSlot} type="video/mp4" />
+              </video>
 
+              <span class="pill-tag" style="align-self:flex-start;">
+                Dance Competition
+              </span>
+
+              <button
+                type="button"
+                class="play"
+                aria-label="Play video"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+
+              <span class="label" style="position:relative; z-index:2;">
+                Hosting a dance competition
+              </span>
+            </div>
+          </div>
+          <div class="gallery-item mid reveal">
+            <div class="gallery-video">
+              <video
+                class="video-player"
+                playsinline
+                loop
+                preload="metadata"
+                aria-label="Adhyatamjot Singh hosting a live crowd"
+              >
+                <source src={boliSlot} type="video/mp4" />
+              </video>
+
+              <span class="pill-tag" style="align-self:flex-start;">
+                Wedding Fun
+              </span>
+
+              <button
+                type="button"
+                class="play"
+                aria-label="Play video"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </button>
+
+              <span class="label" style="position:relative; z-index:2;">
+                Hyping up a wedding crowd
+              </span>
+            </div>
           </div>
 
 
-          <!-- WEDDING -->
-          <div class="gallery-item tall reveal">
-
-            <Image
-              src={weddingGala}
-              alt="Wedding gala host with a microphone"
-              width={480}
-              height={620}
-            />
-
-            <div class="gallery-caption">
-              <span class="label">
-                Wedding Gala Host
-              </span>
-
-              <span class="pill-tag">
-                Weddings
-              </span>
-            </div>
-
-          </div>
-          
         </div>
 
-<a
-          class="btn btn-primary" id="see-more-btn"
-          href={CONTACT.instagram}
-          style="margin: 30px auto !important; display:block; margin: auto; text-align:center;"
-        >
-          See more Videos & Photos
+        <div class="gallery">
 
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-          >
-            <path
-              d="M5 12h14M13 6l6 6-6 6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+          <div class="gallery-item tall reveal">
+            <Image
+              src={keynoteHost}
+              alt="Adhyatamjot Singh hosting a corporate summit on stage"
+              width={480}
+              height={620}
+              loading="lazy"
             />
-          </svg>
+            <div class="gallery-caption">
+              <span class="label">Hosting a corporate summit</span>
+              <span class="pill-tag">Corporate</span>
+            </div>
+          </div>
+
+          <div class="gallery-item tall reveal">
+            <Image
+              src={weddingGala}
+              alt="Adhyatamjot Singh hosting a wedding celebration with a microphone"
+              width={480}
+              height={620}
+              loading="lazy"
+            />
+            <div class="gallery-caption">
+              <span class="label">Hosting a wedding celebration</span>
+              <span class="pill-tag">Weddings</span>
+            </div>
+          </div>
+
+          <div class="gallery-item tall reveal">
+            <Image
+              src={singlingB}
+              alt="Adhyatamjot Singh hosting a DJ Based Band with a microphone"
+              width={480}
+              height={620}
+              loading="lazy"
+            />
+            <div class="gallery-caption">
+              <span class="label">Hosting a DJ Based Band</span>
+              <span class="pill-tag">Weddings</span>
+            </div>
+          </div>
+
+        </div>
+
+        <a
+          class="btn btn-primary"
+          id="see-more-btn"
+          href={CONTACT.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          style="margin: 30px auto !important; display:block; text-align:center;"
+        >
+          See more videos &amp; photos on Instagram
         </a>
+      </div>
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="section-pad" id="about">
+      <div class="container about-grid">
+        <div class="reveal">
+          <h2 class="section-title">
+            A dancer and band performer who now holds the mic.
+          </h2>
+        </div>
+
+        <div class="reveal about-copy">
+          <p>
+            I started on stage as a dancer and then spent 50+ shows with a
+            DJ-based band, learning how a crowd moves, when to build the
+            energy and when to give the room a breather. Hosting is where
+            all of that comes together.
+          </p>
+          <p>
+            Since then I've hosted dance competitions and other events. I
+            care about two things most: the people in the room feel looked
+            after, and the evening runs the way you planned it. That means
+            reading your schedule properly, arriving early and speaking to
+            your planner, DJ and sound team before the first guest walks in.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- EVENT ROSTER -->
+    <section
+      class="section-pad"
+      style="background:var(--bg-soft); border-block:1px solid var(--panel-border);"
+      id="roster"
+    >
+      <div class="container">
+
+        <h2 class="section-title reveal">
+          Events I host
+        </h2>
+
+        <p class="section-intro reveal">
+          Not sure your event fits? Message me. If I'm not the right host,
+          I'll say so.
+        </p>
+
+        <div
+          style="display:flex; flex-direction:column; gap:14px; margin-top:44px;"
+        >
+          {
+            roster.map((r) => (
+              <div class="card roster-row reveal">
+                <div class="roster-row-left">
+                  <span
+                    class="icon-badge"
+                    style="margin:0; flex-shrink:0;"
+                    set:html={micIcon}
+                  />
+                  <div>
+                    <h3 style="margin-bottom:4px;">{r.title}</h3>
+                    <p style="margin:0;">{r.blurb}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
       </div>
     </section>
 
@@ -362,54 +533,87 @@ const micIcon = `
     <section class="section-pad" id="why-me">
       <div class="container">
 
-        <p class="eyebrow reveal">
-          M.03 — Why Me
-        </p>
-
         <h2 class="section-title reveal">
-          Part script, part improv, always on beat.
+          Why people book me
         </h2>
 
-        <div
-          class="card-grid  cols-3"
-          style="margin-top:44px;"
-        >
+        <div class="card-grid cols-3" style="margin-top:44px;">
 
           <div class="card reveal">
-            <h3>
-              Three languages, one mic
-            </h3>
-
+            <h3>Three languages, one mic</h3>
             <p>
-              English, Hindi and Punjabi hosting means no table in the room
-              feels left out — grandparents included.
+              Hindi, English and Punjabi, so every table is included, from
+              grandparents to the friends who came for the dance floor.
             </p>
           </div>
 
-
           <div class="card reveal">
-            <h3>
-              Performer's instinct
-            </h3>
-
+            <h3>A performer's instinct</h3>
             <p>
-              Years on stage as a dancer taught me how to read a crowd's
-              energy and adjust the pace in real time.
+              Dancing and band shows taught me to read a crowd's energy and
+              change the pace in the moment.
             </p>
           </div>
 
-
           <div class="card reveal">
-            <h3>
-              Runs on time, every time
-            </h3>
-
+            <h3>Easy to work with</h3>
             <p>
-              Event managers love working with me because the schedule I'm
-              handed is the schedule that actually happens.
+              I read the run-of-show, check in before the event and keep to
+              time, so planners and families know what to expect.
             </p>
           </div>
 
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section
+      class="section-pad"
+      style="background:var(--bg-soft); border-block:1px solid var(--panel-border);"
+      id="how-it-works"
+    >
+      <div class="container">
+
+        <h2 class="section-title reveal">
+          How booking works
+        </h2>
+
+        <ol class="steps">
+          {
+            steps.map((s, i) => (
+              <li class="card reveal">
+                <span class="step-n">{i + 1}</span>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </li>
+            ))
+          }
+        </ol>
+
+      </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="section-pad" id="faq">
+      <div class="container faq-wrap">
+
+        <h2 class="section-title reveal">
+          Questions people ask before booking
+        </h2>
+
+        <div class="faq-list">
+          {
+            faqs.map((f) => (
+              <details class="card reveal">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
         </div>
 
       </div>
@@ -421,36 +625,19 @@ const micIcon = `
 
       <div class="container reveal">
 
-        <h2>
-          Your event deserves a voice, not a script.
-        </h2>
+        <h2>Planning a sangeet, wedding or corporate night?</h2>
 
         <p>
-          Tell me the date, the city and the crowd — I'll handle the rest
-          of the room.
+          Tell me the date, the city and the crowd, and I'll tell you if I'm
+          free. You'll usually hear back the same day.
         </p>
 
         <a
           class="btn btn-primary"
-          href={waLink("Hey, I'm interested in booking you for an event.")}
+          href={waLink(bookMsg)}
           style="margin-top:30px;"
         >
-          Book the Mic
-
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-          >
-            <path
-              d="M5 12h14M13 6l6 6-6 6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          Message me on WhatsApp
         </a>
 
       </div>
@@ -467,69 +654,38 @@ const micIcon = `
 
       <div class="container reveal">
 
-        <p
-          class="eyebrow"
-          style="justify-content:center;"
-        >
-          05 // Contact
-        </p>
+        <h2 id="contact-title">Prefer another way to reach me?</h2>
 
-        <h2 id="contact-title">
-          Hiring a lead or building something reliable? Let's talk.
-        </h2>
-
-        <p>
-          Send an email or start a quick WhatsApp chat — whichever suits you.
-        </p>
-
+        <p>Email, Instagram or WhatsApp all work. I reply to all three.</p>
 
         <address
           class="contact-grid"
           style="max-width:720px; margin-inline:auto; text-align:left; font-style:normal;"
         >
 
-          <!-- INSTAGRAM -->
           <a
             class="contact-card"
             href={CONTACT.instagram}
             target="_blank"
             rel="noopener noreferrer"
           >
-
             <span class="contact-left">
-
-              <span
-                class="contact-icon"
-                set:html={instagramIcon}
-              />
-
+              <span class="contact-icon" set:html={instagramIcon} />
               <span>
-                <span class="title">
-                  Instagram
-                </span>
-
-                <span class="value">
-                  @addy_khatri01
-                </span>
+                <span class="title">Instagram</span>
+                <span class="value">@addy_khatri01</span>
               </span>
-
             </span>
-
           </a>
 
-
-          <!-- WEBSITE -->
           <a
             class="contact-card"
             href={CONTACT.liveSite}
             target="_blank"
             rel="noopener noreferrer"
           >
-
             <span class="contact-left">
-
               <span class="contact-icon">
-
                 <svg
                   width="16"
                   height="16"
@@ -543,34 +699,17 @@ const micIcon = `
                   <path d="M2 12h20" />
                   <path d="M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20Z" />
                 </svg>
-
               </span>
-
               <span>
-                <span class="title">
-                  Website
-                </span>
-
-                <span class="value">
-                  adhyatamjot-singh.eu.org
-                </span>
+                <span class="title">Website</span>
+                <span class="value">adhyatamjot-singh.eu.org</span>
               </span>
-
             </span>
-
           </a>
 
-
-          <!-- EMAIL -->
-          <a
-            class="contact-card"
-            href={mailLink("Project or hiring enquiry")}
-          >
-
+          <a class="contact-card" href={mailLink("Event hosting enquiry")}>
             <span class="contact-left">
-
               <span class="contact-icon">
-
                 <svg
                   width="16"
                   height="16"
@@ -580,47 +719,25 @@ const micIcon = `
                   stroke-width="2"
                   aria-hidden="true"
                 >
-                  <rect
-                    x="2"
-                    y="4"
-                    width="20"
-                    height="16"
-                    rx="2"
-                  />
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="m2 7 10 6 10-6" />
                 </svg>
-
               </span>
-
               <span>
-                <span class="title">
-                  Email
-                </span>
-
-                <span class="value">
-                  {CONTACT.email}
-                </span>
+                <span class="title">Email</span>
+                <span class="value">{CONTACT.email}</span>
               </span>
-
             </span>
-
           </a>
 
-
-          <!-- WHATSAPP -->
           <a
             class="contact-card"
-            href={waLink(
-              "Hi Adhyatamjot, I came across your portfolio and would like to talk about a project or role."
-            )}
+            href={waLink(bookMsg)}
             target="_blank"
             rel="noopener noreferrer"
           >
-
             <span class="contact-left">
-
               <span class="contact-icon">
-
                 <svg
                   width="16"
                   height="16"
@@ -631,34 +748,20 @@ const micIcon = `
                   <path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.1-.6l.4-.5c.1-.1.2-.3.2-.4.1-.1.1-.3 0-.4-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.7.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4Z" />
                   <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z" />
                 </svg>
-
               </span>
-
               <span>
-                <span class="title">
-                  WhatsApp
-                </span>
-
-                <span class="value">
-                  Start a chat
-                </span>
+                <span class="title">WhatsApp</span>
+                <span class="value">Start a chat</span>
               </span>
-
             </span>
-
           </a>
 
-
-          <!-- LOCATION -->
           <div
             class="contact-card"
             style="cursor:default; grid-column:1 / -1;"
           >
-
             <span class="contact-left">
-
               <span class="contact-icon">
-
                 <svg
                   width="16"
                   height="16"
@@ -671,21 +774,12 @@ const micIcon = `
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
-
               </span>
-
               <span>
-                <span class="title">
-                  Based in
-                </span>
-
-                <span class="value">
-                  {CONTACT.base}
-                </span>
+                <span class="title">Based in</span>
+                <span class="value">{CONTACT.base}. Travels across India.</span>
               </span>
-
             </span>
-
           </div>
 
         </address>
@@ -699,112 +793,44 @@ const micIcon = `
 
   <!-- VIDEO SCRIPT -->
   <script>
-    const videoPlayer =
-      document.querySelector<HTMLVideoElement>("#video-player");
+    const videoArr = document.querySelectorAll<HTMLVideoElement>(".video-player");
+    const btnArr = document.querySelectorAll<HTMLButtonElement>(".play");
 
-    const playBtn =
-      document.querySelector<HTMLButtonElement>("#video-btn");
+    const playSvg =
+      '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+    const pauseSvg =
+      '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>';
 
-    if (videoPlayer && playBtn) {
+    videoArr.forEach((video, index) => {
+      const btn = btnArr[index];
+      if (video && btn) {
+        const sync = () => {
+          btn.innerHTML = video.paused ? playSvg : pauseSvg;
+          btn.setAttribute("aria-label", video.paused ? "Play video" : "Pause video");
+      };
 
-      playBtn.addEventListener("click", async () => {
-
-        if (videoPlayer.paused) {
-
+      btn.addEventListener("click", async () => {
+        if (video.paused) {
           try {
-            await videoPlayer.play();
-
-            playBtn.innerHTML = `
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
-              </svg>
-            `;
-
-            playBtn.setAttribute("aria-label", "Pause video");
-
+            await video.play();
           } catch (error) {
             console.error("Video could not be played:", error);
           }
-
         } else {
-
-          videoPlayer.pause();
-
-          playBtn.innerHTML = `
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path d="M8 5v14l11-7z" />
-            </svg>
-          `;
-
-          playBtn.setAttribute("aria-label", "Play video");
+          video.pause();
         }
-
       });
 
-
-      /*
-       * Keep the icon synchronized if the video
-       * is paused/played by something other than
-       * the custom button.
-       */
-
-      videoPlayer.addEventListener("play", () => {
-
-        playBtn.innerHTML = `
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
-          </svg>
-        `;
-
-        playBtn.setAttribute("aria-label", "Pause video");
-      });
-
-
-      videoPlayer.addEventListener("pause", () => {
-
-        playBtn.innerHTML = `
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        `;
-
-        playBtn.setAttribute("aria-label", "Play video");
-      });
-
+      video.addEventListener("play", sync);
+      video.addEventListener("pause", sync);
     }
+    });
   </script>
 </Layout>
 
 
 <style>
-  /* -------------------------------------------------------
-     Warm "on stage" theme
-  ------------------------------------------------------- */
-
+  /* Warm "on stage" theme */
   .emcee-theme {
     --accent: #e7b25c;
     --accent-soft: rgba(231, 178, 92, 0.14);
@@ -820,7 +846,6 @@ const micIcon = `
     --font-mono: "Fraunces", Georgia, serif;
   }
 
-
   .emcee-theme h1,
   .emcee-theme h2,
   .emcee-theme h3 {
@@ -828,103 +853,112 @@ const micIcon = `
     letter-spacing: -0.01em;
   }
 
-
-  .emcee-theme .eyebrow,
   .emcee-theme .pill-tag,
-  .emcee-theme .card-index,
-  .emcee-theme .ticker-item,
-  .emcee-theme .gallery-video .filename,
-  .emcee-theme .gallery-video small {
+  .emcee-theme .ticker-item, {
     font-style: italic;
     letter-spacing: 0.04em;
   }
-
 
   .emcee-theme .btn {
     font-style: normal;
     letter-spacing: 0.02em;
   }
 
-
   .emcee-theme .btn-primary {
     color: #2b1706;
   }
-
 
   .emcee-theme .highlight {
     color: var(--accent);
     font-style: italic;
   }
 
-
-  /* -------------------------------------------------------
-     HERO
-  ------------------------------------------------------- */
-
+  /* Hero */
   .stage-hero {
     position: relative;
     padding-bottom: 0;
     text-align: center;
   }
 
-
   .stage-hero .bg-grid,
   .stage-hero .bg-glow {
     display: none;
   }
 
-
   .stage-glow {
     position: absolute;
     inset: 0;
-
-    background:
-      radial-gradient(
-        ellipse 55% 60% at 50% 0%,
-        rgba(231, 178, 92, 0.32),
-        transparent 70%
-      );
-
+    background: radial-gradient(
+      ellipse 55% 60% at 50% 0%,
+      rgba(231, 178, 92, 0.32),
+      transparent 70%
+    );
     pointer-events: none;
   }
-
 
   .stage-beams {
     position: absolute;
     inset: 0;
     opacity: 0.55;
     pointer-events: none;
-
     background-image:
-      linear-gradient(
-        100deg,
-        transparent 44%,
-        rgba(255, 232, 196, 0.09) 49%,
-        transparent 54%
-      ),
-      linear-gradient(
-        78deg,
-        transparent 58%,
-        rgba(255, 232, 196, 0.07) 63%,
-        transparent 68%
-      );
+      linear-gradient(100deg, transparent 44%, rgba(255, 232, 196, 0.09) 49%, transparent 54%),
+      linear-gradient(78deg, transparent 58%, rgba(255, 232, 196, 0.07) 63%, transparent 68%);
   }
-
 
   .stage-hero .hero-inner {
     position: relative;
   }
 
-
   .stage-hero h1 {
     font-style: italic;
   }
 
+  .stat-row {
+    list-style: none;
+    margin: 44px auto 36px;
+    padding: 0;
+    max-width: 760px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
 
-  /* -------------------------------------------------------
-     ROSTER
-  ------------------------------------------------------- */
+  .stat-row li {
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    padding: 16px 14px;
+    background: rgba(22, 17, 12, 0.6);
+  }
 
+  .stat-row strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 26px;
+    color: var(--accent);
+  }
+
+  .stat-row span {
+    display: block;
+    margin-top: 4px;
+    font-size: 13px;
+    opacity: 0.8;
+  }
+
+  /* About */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-copy p {
+    max-width: 62ch;
+    line-height: 1.75;
+  }
+
+  /* Roster */
   .roster-row {
     display: flex;
     align-items: center;
@@ -932,35 +966,84 @@ const micIcon = `
     gap: 20px;
   }
 
-
   .roster-row-left {
     display: flex;
     align-items: center;
     gap: 22px;
   }
 
-
-  .roster-number {
-    font-size: 26px;
-    opacity: 0.5;
+  /* Steps */
+  .steps {
+    list-style: none;
+    margin: 44px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 
+  .step-n {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 14px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 600;
+  }
 
-  /* -------------------------------------------------------
-     VIDEO
-  ------------------------------------------------------- */
+  /* FAQ */
+  .faq-wrap {
+    max-width: 780px;
+  }
 
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 36px;
+  }
+
+  .faq-list summary {
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+  }
+
+  .faq-list summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-list summary::after {
+    content: "+";
+    float: right;
+    color: var(--accent);
+    transition: transform 0.2s ease;
+  }
+
+  .faq-list details[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq-list details p {
+    margin: 12px 0 0;
+    line-height: 1.7;
+  }
+
+  /* Video */
   .gallery-video {
     position: relative;
     overflow: hidden;
     min-height: 280px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 16px;
+    padding: 16px;
   }
-
 
   .gallery-video video {
     position: absolute;
@@ -971,63 +1054,35 @@ const micIcon = `
     z-index: 0;
   }
 
-
   .gallery-video::after {
     content: "";
     position: absolute;
     inset: 0;
-
     background: rgba(0, 0, 0, 0.3);
-
     pointer-events: none;
-
     z-index: 1;
   }
 
-
   .gallery-video .pill-tag,
-  .gallery-video .filename,
-  .gallery-video .play,
-  .gallery-video small {
+  .gallery-video .play {
     position: relative;
     z-index: 2;
   }
 
-
-  .gallery-video .filename {
-    display: block;
-  }
-
-
-  .gallery-video small {
-    display: block;
-  }
-
-
   .gallery-video .play {
     align-self: center;
-
     width: 54px;
     height: 54px;
-
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 50%;
-
     background: rgba(0, 0, 0, 0.45);
     color: white;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     cursor: pointer;
-
-    transition:
-      transform 0.2s ease,
-      background 0.2s ease,
-      border-color 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   }
-
 
   .gallery-video .play:hover {
     transform: scale(1.08);
@@ -1035,78 +1090,54 @@ const micIcon = `
     border-color: var(--accent);
   }
 
-
   .gallery-video .play:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 4px;
   }
 
-
-  /* -------------------------------------------------------
-     CURTAIN CTA
-  ------------------------------------------------------- */
-
+  /* Curtain CTA */
   .cta-band.curtain {
     position: relative;
   }
 
-
   .cta-band.curtain::before {
     content: "";
-
     position: absolute;
     inset: 0;
-
-    background-image:
-      repeating-linear-gradient(
-        90deg,
-        rgba(231, 178, 92, 0.05) 0 2px,
-        transparent 2px 46px
-      );
-
-    -webkit-mask-image:
-      linear-gradient(
-        to bottom,
-        transparent,
-        black 30%,
-        black 70%,
-        transparent
-      );
-
-    mask-image:
-      linear-gradient(
-        to bottom,
-        transparent,
-        black 30%,
-        black 70%,
-        transparent
-      );
-
+    background-image: repeating-linear-gradient(
+      90deg,
+      rgba(231, 178, 92, 0.05) 0 2px,
+      transparent 2px 46px
+    );
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
+    mask-image: linear-gradient(to bottom, transparent, black 30%, black 70%, transparent);
     pointer-events: none;
   }
-
-
-  /* -------------------------------------------------------
-     CONTACT
-  ------------------------------------------------------- */
 
   .contact-card .title,
   .contact-card .value {
     display: block;
   }
 
-
-  /* -------------------------------------------------------
-     MOBILE
-  ------------------------------------------------------- */
+  /* Responsive */
   @media (min-width: 601px) {
-
-     #see-more-btn {
+    #see-more-btn {
       width: 30%;
     }
-
   }
+
+  @media (max-width: 800px) {
+    .about-grid,
+    .steps {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
   @media (max-width: 600px) {
+    .stat-row {
+      grid-template-columns: 1fr;
+    }
 
     .roster-row {
       flex-direction: row;
@@ -1116,7 +1147,13 @@ const micIcon = `
     #see-more-btn {
       width: 100%;
     }
+  }
 
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-video .play,
+    .faq-list summary::after {
+      transition: none;
+    }
   }
 </style>
 ```
