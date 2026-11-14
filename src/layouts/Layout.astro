@@ -8,11 +8,12 @@ interface Props {
   title: string;
   description: string;
   path?: string;
+  ogImageProp?: string;
 }
 
-const { title, description, path = "/" } = Astro.props;
+const { title, description, path = "/", ogImageProp = "/logo.png" } = Astro.props;
 const canonicalURL = new URL(path, Astro.site);
-const ogImage = new URL("/og-image.jpg", Astro.site);
+const ogImage = new URL(ogImageProp, Astro.site);
 const theme = getPageTheme(path);
 ---
 <!doctype html>

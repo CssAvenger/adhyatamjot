@@ -110,7 +110,7 @@ const schema = {
       name: "Adhyatamjot Singh, Event Emcee & Anchor",
       description: pageDescription,
       url: `${CONTACT.liveSite}/emcee`,
-      image: `${CONTACT.liveSite}/og-image.jpg`,
+      image: `${CONTACT.liveSite}/emcee-main.png`,
       sameAs: [CONTACT.instagram],
       areaServed: [
         { "@type": "City", name: "Delhi" },
@@ -212,6 +212,7 @@ const bookMsg =
 <Layout
   title={pageTitle}
   description={pageDescription}
+  ogImageProp="/emcee-main.png"
   path="/emcee"
 >
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
